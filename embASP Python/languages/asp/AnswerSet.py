@@ -1,17 +1,22 @@
+from languages.asp.ASPMapper import ASPMapper
 class AnserSet:
     
     def __init__(self, value, weightMap=dict()):
         self.__value = value
         self.__weight_map = weightMap
-        self.__atoms = None
+        self.__atoms = list()
         
     def getAnswerSet(self):
         return self.__value
     
     def getAtoms(self):
-        if self.__atoms == None:
+        if not self.__atoms:
+            mapper = ASPMapper.getInstance()
+            for atom in self.__value:
+                obj = mapper.getObject(atom)
+                if (not obj == None):
+                    self.__atoms.append(obj)
             #serve il mapper singleton
-            pass
         return self.__atoms
     
     def getLevelWeight(self):

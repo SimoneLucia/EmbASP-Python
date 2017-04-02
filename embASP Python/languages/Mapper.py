@@ -21,13 +21,14 @@ class Mapper(ABC):
         return self._predicateClass.get(predicate)
     
     def __populateObject(self, cl, parameters, obj):
-        index=0
-        for field in set(obj.__dict__.keys()):
+#         index=0
+#         for field in set(obj.__dict__.keys()):
 #           VALORE DELLA POSIZIONE DEL TERM AL POSTO DI INDEX
-            term = index
-            nameMethod = "set" + field[:1].upper() + field[1:]
-            getattr(obj, nameMethod)(parameters[term])
-            index+=1
+        for key, value in obj.getTerms().items():
+#             term = index
+            nameMethod = "set" + value[:1].upper() + value[1:]
+            getattr(obj, nameMethod)(parameters[key])
+#             index+=1
             
 
     
@@ -64,11 +65,12 @@ class Mapper(ABC):
     def getString(self, obj):
         predicate = self.registerClass(obj.__class__)
         parametersMap = dict()
-        index=0
-        for field in set(obj.__dict__.keys()):
-            value = getattr(obj, "get" + field[:1].upper() + field[1:])()
+#         index=0
+#         for field in set(obj.__dict__.keys()):
+        for key, value in obj.getTerms().items():
+            val = getattr(obj, "get" + value[:1].upper() + value[1:])()
 #           VALORE DELLA POSIZIONE DEL TERM AL POSTO DI INDEX
-            parametersMap[index] = value
-            index+=1
+            parametersMap[key] = val
+#             index+=1
         return self._getActualString(predicate, parametersMap)
         

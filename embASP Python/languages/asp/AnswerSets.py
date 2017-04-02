@@ -4,11 +4,11 @@ class AnswerSets(Output):
     
     def __init__(self, out, err=None):
         super().__init__(out, err)
-        self._answersets = set()
+        self._answersets = None
         
     def getAnswerSets(self):
-        if(not self._answersets):
-            self._answersets = set()
+        if(self._answersets == None):
+            self._answersets = list()
             self._parse()
         return self._answersets
         

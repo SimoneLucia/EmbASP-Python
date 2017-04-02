@@ -46,7 +46,6 @@ class InputProgram:
         to_return=""
         for paths in self.__files_paths:
             if(len(paths) != 0):
-                print(to_return)
                 to_return += paths + " "
         return to_return
 

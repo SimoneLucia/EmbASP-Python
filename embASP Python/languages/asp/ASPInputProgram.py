@@ -1,4 +1,5 @@
 from base.InputProgram import InputProgram
+from languages.asp.ASPMapper import ASPMapper
 
 class ASPInputProgram(InputProgram):
     
@@ -9,11 +10,7 @@ class ASPInputProgram(InputProgram):
     #ci serve il mapper singleton
     
     def addObjectInput(self, inputObj):
-        InputProgram.addProgram(self, inputObj)
-    
-    
-    
-    
+        self.addProgram(ASPMapper.getInstance().getString(inputObj) + ".")
     
     
     def addObjectsInput(self, inputObjs):

@@ -15,7 +15,7 @@ class DLVAnswerSets(AnswerSets):
             matcherAnswerSet = tuple(re.finditer(r"(-?[a-z][A-Za-z0-9_]*((.+?))?)(, |})", answerSet))
             for ma in matcherAnswerSet:
                 answerSetList.add(ma.group(1))
-            self._answersets.add(AnserSet(answerSetList))
+            self._answersets.append(AnserSet(answerSetList))
     
 
     

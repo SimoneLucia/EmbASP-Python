@@ -4,59 +4,212 @@ from languages.asp.ASPInputProgram import ASPInputProgram
 from specializations.dlv.DLVAnswerSets import DLVAnswerSets
 from builtins import isinstance
 from languages.Predicate import Predicate
-from languages.asp import ASPMapper
-from languages.asp.ASPMapper import ASPMapepr
+from languages.asp.ASPMapper import ASPMapper
+from languages.Predicate import Predicate
+from base.Output import Output
+from languages.asp.AnswerSets import AnswerSets
+from base.OptionDescriptor import OptionDescriptor
 
 
 
-class Uno(Predicate):
-    
-    PredicateName="uno"
-    
-    def __init__(self):
-        self.uno="primo"
-        self.due="secondo"
-        
+
+class Cell(Predicate):
+      
+    __predicateName="cell"
+      
+    def __init__(self, row=None, column=None, value=None):
+        super().__init__("row", "column", "value")
+        self.row = row
+        self.column = column
+        self.value = value
+          
     @classmethod
     def getPredicateName(cls):
-        return cls.PredicateName
-    
-    def getUno(self):
-        return self.uno
-    
-    def getDue(self):
-        return self.due
-    
-    def setUno(self, val):
-        self.uno = val
+        return cls.__predicateName
+          
+    def getRow(self):
+        return self.row
+    def getColumn(self):
+        return self.column
+    def getValue(self):
+        return self.value
+    def setRow(self, row):
+        self.row = row
+    def setColumn(self, column):
+        self.column = column
+    def setValue(self, value):
+        self.value = value
         
-    def setDue(self, val):
-        self.due = val
+        
+w, h = 9, 9;
+inputMatrix = [ [ 1, 0, 0, 0, 0, 7, 0, 9, 0 ],
+                [ 0, 3, 0, 0, 2, 0, 0, 0, 8 ],
+                [ 0, 0, 9, 6, 0, 0, 5, 0, 0 ],
+                [ 0, 0, 5, 3, 0, 0, 9, 0, 0 ],
+                [ 0, 1, 0, 0, 8, 0, 0, 0, 2 ],
+                [ 6, 0, 0, 0, 0, 4, 0, 0, 0 ],
+                [ 3, 0, 0, 0, 0, 0, 0, 1, 0 ],
+                [ 0, 4, 1, 0, 0, 0, 0, 0, 7 ],
+                [ 0, 0, 7, 0, 0, 0, 3, 0, 0 ] ]
 
 
-un = Uno()
+# inputMatrix = [ [ 5, 0, 0, 0, 0, 0, 0, 8, 0 ],
+#                 [ 0, 3, 0, 7, 0, 0, 0, 9, 0 ],
+#                 [ 0, 0, 0, 4, 0, 2, 6, 0, 0 ],
+#                 [ 6, 2, 0, 8, 0, 0, 3, 0, 0 ],
+#                 [ 0, 9, 5, 0, 0, 0, 7, 1, 0 ],
+#                 [ 0, 0, 1, 0, 0, 5, 0, 2, 6 ],
+#                 [ 0, 0, 8, 5, 0, 3, 0, 0, 0 ],
+#                 [ 0, 5, 0, 0, 0, 9, 0, 4, 0 ],
+#                 [ 0, 1, 0, 0, 0, 0, 0, 0, 8 ] ]
+            
 
-mapper = ASPMapepr.getInstance()
+handler = DesktopHandler(DLVDesktopService("app/src/test/resources/asp/executables/dlv.mingw.exe"))
+ 
+inp = ASPInputProgram()
 
-print(mapper.registerClass(Uno))
+for i in range(9):
+    for j in range(9):
+#         print(str(inputMatrix[i][j]) + " ", end="")
+        if (inputMatrix[i][j] != 0):
+            inp.addObjectInput(Cell(i,j,inputMatrix[i][j]))
+#     print()
+ 
+inp.addFilesPath("app/src/test/resources/asp/sudoku")
+ 
+handler.addProgram(inp)
+ 
+out = handler.startSync()
+ 
+if not isinstance(out, Output):
+    raise "error"
 
-print(mapper._predicateClass)
+if (len(out.getAnswerSets()) != 0):
+    ans = out.getAnswerSets()[0]
+    
+    Matrix = [[0 for x in range(w)] for y in range(h)] 
+     
+    for obj in ans.getAtoms():
+        obj.__class__ = Cell
+        Matrix[int(obj.getRow())][int(obj.getColumn())] = obj.getValue()
+     
+    for i in range(9):
+        for j in range(9):
+            print(str(Matrix[i][j]), end=" ")
+        print("")
+                
 
-print(mapper.getClass("uno"))
-
-ob = mapper.getObject("uno(uno,due)")
-
-print(ob.getDue())
-
-print(ob.getUno())
-
-print(mapper.unregisterClass(Uno))
-
-print(mapper._predicateClass)
-
-print(mapper.getString(un))
 
 
+
+
+
+# class Test(Predicate):
+#     
+#     __predicateName="test"
+#     
+#     def __init__(self):
+#         super().__init__("uno", "due")
+#         self.due = "ciccio"
+#         self.uno = "franco"
+#         
+#     @classmethod
+#     def getPredicateName(cls):
+#         return cls.__predicateName
+#         
+#     def getUno(self):
+#         return self.uno
+#     def getDue(self):
+#         return self.due
+#     def setUno(self, uno):
+#         self.uno = uno
+#     def setDue(self, due):
+#         self.due = due
+# 
+# t = Test()
+# 
+# mapper = ASPMapper.getInstance()
+#  
+# print(mapper.registerClass(Test))
+#  
+# print(mapper._predicateClass)
+#  
+# print(mapper.getClass("test"))
+#  
+# ob = mapper.getObject("test(aaa,bbb)")
+#  
+# print(ob.getDue())
+#  
+# print(ob.getUno())
+#  
+# print(mapper.unregisterClass(Test))
+#  
+# print(mapper._predicateClass)
+#  
+# print(mapper.getString(t))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# class Uno(Predicate):
+#     
+#     PredicateName="uno"
+#     
+#     def __init__(self):
+#         self.uno="primo"
+#         self.due="secondo"
+#         
+#     @classmethod
+#     def getPredicateName(cls):
+#         return cls.PredicateName
+#     
+#     def getUno(self):
+#         return self.uno
+#     
+#     def getDue(self):
+#         return self.due
+#     
+#     def setUno(self, val):
+#         self.uno = val
+#         
+#     def setDue(self, val):
+#         self.due = val
+# 
+# 
+# un = Uno()
+# 
+# mapper = ASPMapepr.getInstance()
+# 
+# print(mapper.registerClass(Uno))
+# 
+# print(mapper._predicateClass)
+# 
+# print(mapper.getClass("uno"))
+# 
+# ob = mapper.getObject("uno(uno,due)")
+# 
+# print(ob.getDue())
+# 
+# print(ob.getUno())
+# 
+# print(mapper.unregisterClass(Uno))
+# 
+# print(mapper._predicateClass)
+# 
+# print(mapper.getString(un))
 
 
 

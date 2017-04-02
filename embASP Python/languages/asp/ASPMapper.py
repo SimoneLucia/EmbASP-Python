@@ -1,5 +1,5 @@
 from languages.Mapper import Mapper
-class ASPMapepr(Mapper):
+class ASPMapper(Mapper):
     INSTANCE = None
 
     def __init__(self):
@@ -10,7 +10,7 @@ class ASPMapepr(Mapper):
     @classmethod
     def getInstance(cls):
         if cls.INSTANCE is None:
-            cls.INSTANCE = ASPMapepr()
+            cls.INSTANCE = ASPMapper()
         return cls.INSTANCE
     
     def _getActualString(self, predicate, parametersMap):
@@ -22,7 +22,7 @@ class ASPMapepr(Mapper):
             if (objectTerm == None):
                 raise("Wrong term number of predicate " + predicate)
             if (isinstance(objectTerm, int)):
-                atom += objectTerm + ""
+                atom += str(objectTerm)
             else:
                 atom += "\"" + str(objectTerm) + "\""
         atom += ")"
