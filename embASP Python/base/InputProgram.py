@@ -1,13 +1,13 @@
 class InputProgram:
     
     def __init__(self):
-        self._programs = None
+        self._programs = ""
         self.__files_paths = list()
         self._separator = " "
 
 
     def addObjectInput(self,inputObj):
-        raise Exception("functionality not implemented")
+        raise "functionality not implemented"
 
     def addObjectsInput(self, inputObjs):
         for inputObj in inputObjs:

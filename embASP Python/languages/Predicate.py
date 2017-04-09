@@ -8,10 +8,14 @@ class Predicate(ABC):
             self.__map[index] = value
             index += 1
     
+#     @classmethod
+#     @abstractmethod
+#     def getPredicateName(cls):
+#         pass
+    
     @classmethod
-    @abstractmethod
     def getPredicateName(cls):
-        pass
+        return cls.predicateName
     
     def getTerms(self):
         return self.__map

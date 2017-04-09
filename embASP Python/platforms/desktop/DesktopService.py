@@ -5,6 +5,7 @@ from base.InputProgram import InputProgram
 from base.Output import Output
 import subprocess
 import time
+from threading import Thread
 
 class DesktopService(Service):
     
@@ -23,8 +24,18 @@ class DesktopService(Service):
         self._exe_path = exe_path
     
     def startAsync(self, callback, programs, options):
-        #TODO
-        pass
+        
+        class myThread(Thread):
+            def __init__(self, startSync):
+                Thread.__init__(self)
+                self.startSync = startSync
+            def run(self):
+                callback.callback(self.startSync(programs, options))
+                 
+        th = myThread(self.startSync)
+        th.start()
+        
+
     
     def startSync(self, programs, options):
         option = ""

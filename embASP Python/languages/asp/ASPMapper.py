@@ -1,17 +1,18 @@
 from languages.Mapper import Mapper
 class ASPMapper(Mapper):
-    INSTANCE = None
+    
+    __Instance = None
 
     def __init__(self):
-        if self.INSTANCE is not None:
+        if ASPMapper.__Instance:
             raise("Instance already exists")
         super().__init__()
 
     @classmethod
     def getInstance(cls):
-        if cls.INSTANCE is None:
-            cls.INSTANCE = ASPMapper()
-        return cls.INSTANCE
+        if not cls.__Instance:
+            cls.__Instance = ASPMapper()
+        return cls.__Instance
     
     def _getActualString(self, predicate, parametersMap):
         atom = predicate + "("
