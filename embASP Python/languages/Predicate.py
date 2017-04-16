@@ -1,11 +1,13 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 class Predicate(ABC):
     
-    def __init__(self, *terms):
+    def __init__(self, terms):
         index = 0
-        self.__map = dict()
-        for value in terms:
-            self.__map[index] = value
+        self.__mapTermsType = dict()
+        for val in terms:
+            if len(terms) > 1 and len(val) > 2:
+                raise Exception("Bad definition of term")
+            self.__mapTermsType[index] = val
             index += 1
     
 #     @classmethod
@@ -17,5 +19,6 @@ class Predicate(ABC):
     def getPredicateName(cls):
         return cls.predicateName
     
-    def getTerms(self):
-        return self.__map
+    def getTermsType(self):
+        return self.__mapTermsType
+    

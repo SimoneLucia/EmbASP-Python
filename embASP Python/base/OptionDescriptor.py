@@ -2,7 +2,7 @@ class OptionDescriptor:
     
     def __init__(self, initial_option=None):
         self._options = initial_option
-        self._separator = None
+        self._separator = ""
         
     def addOption(self, option):
         if (self._options == None or self._options == ""):

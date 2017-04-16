@@ -59,13 +59,23 @@ class DesktopService(Service):
         if (self._exe_path == None):
             return Output("", "Error: executable not found");
         
-        exep = str(self._exe_path) + " " + str(option)
+        exep = str(self._exe_path)
         
-        print(exep + files_paths + self._load_from_STDIN_option)
+        opt = str(option)
+        
+        lis = list()
+        lis.append(exep)
+        if opt != "":
+            lis.append(opt)
+        lis.append(files_paths[:-1])
+        if self._load_from_STDIN_option != "":
+            lis.append(self._load_from_STDIN_option)
+        
+        print(exep + " " + opt + files_paths + self._load_from_STDIN_option)
         
         start = int(time.time()*1e+9)
         
-        proc = subprocess.Popen([exep, files_paths, self._load_from_STDIN_option], shell=True, encoding="UTF-8", stdout=subprocess.PIPE, stdin=subprocess.PIPE, )
+        proc = subprocess.Popen(lis, encoding="UTF-8", stdout=subprocess.PIPE, stdin=subprocess.PIPE, )
         
         output, error = proc.communicate(final_program)
         

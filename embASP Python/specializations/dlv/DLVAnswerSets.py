@@ -8,11 +8,11 @@ class DLVAnswerSets(AnswerSets):
         super().__init__(out, err)
         
     def _parse(self):
-        match = tuple(re.finditer(r"{(.*)}", self._output))
+        match = tuple(re.finditer(r"\{(.*)\}", self._output))
         for m in match:
             answerSet = m.group()
             answerSetList = set()
-            matcherAnswerSet = tuple(re.finditer(r"(-?[a-z][A-Za-z0-9_]*((.+?))?)(, |})", answerSet))
+            matcherAnswerSet = tuple(re.finditer(r"(-?[a-z][A-Za-z0-9_]*(\(.+?\))?)(, |\})", answerSet))
             for ma in matcherAnswerSet:
                 answerSetList.add(ma.group(1))
             self._answersets.append(AnserSet(answerSetList))

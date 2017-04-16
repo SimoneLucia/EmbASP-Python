@@ -24,10 +24,18 @@ class Mapper(ABC):
 #         index=0
 #         for field in set(obj.__dict__.keys()):
 #           VALORE DELLA POSIZIONE DEL TERM AL POSTO DI INDEX
-        for key, value in obj.getTerms().items():
+        for key, value in obj.getTermsType().items():
 #             term = index
-            nameMethod = "set" + value[:1].upper() + value[1:]
-            getattr(obj, nameMethod)(parameters[key])
+            if len(value) == 2:
+                nameMethod = "set" + value[0][:1].upper() + value[0][1:]
+            else:
+                nameMethod = "set" + value[:1].upper() + value[1:]
+            
+            if  len(value) == 2 and value[1] is int:
+                getattr(obj, nameMethod)(int(parameters[key]))
+            else:
+                getattr(obj, nameMethod)(parameters[key])
+            
 #             index+=1
             
 
@@ -67,8 +75,11 @@ class Mapper(ABC):
         parametersMap = dict()
 #         index=0
 #         for field in set(obj.__dict__.keys()):
-        for key, value in obj.getTerms().items():
-            val = getattr(obj, "get" + value[:1].upper() + value[1:])()
+        for key, value in obj.getTermsType().items():
+            if len(value) == 2:
+                val = getattr(obj, "get" + value[0][:1].upper() + value[0][1:])()
+            else:
+                val = getattr(obj, "get" + value[:1].upper() + value[1:])()
 #           VALORE DELLA POSIZIONE DEL TERM AL POSTO DI INDEX
             parametersMap[key] = val
 #             index+=1
