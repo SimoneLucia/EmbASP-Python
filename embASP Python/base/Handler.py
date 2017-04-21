@@ -1,13 +1,14 @@
-from abc import ABC
+from abc import ABCMeta
 
-class Handler(ABC):
+class Handler(object):
+    __metaclass__ = ABCMeta
     
     def __init__(self):
         self._programs = dict()
         self._options = dict()
         
     def addOption(self, o):
-        last_index = self._options.size()
+        last_index = len(self._options)
         current_value = last_index
         self._options[last_index]=o
         return current_value

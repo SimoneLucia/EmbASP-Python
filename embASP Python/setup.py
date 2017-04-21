@@ -4,8 +4,8 @@ from distutils.core import setup
 from setuptools import find_packages
 import sys
 
-if sys.version_info < (3,6):
-    sys.exit('Sorry, Python < 3,6 is not supported')
+# if sys.version_info < (3,6):
+#     sys.exit('Sorry, Python < 3,6 is not supported')
     
 setup(name='embASP',
       version='0.1',

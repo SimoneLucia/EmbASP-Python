@@ -1,6 +1,7 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
-class Service(ABC):
+class Service(object):
+    __metaclass__ = ABCMeta
     
     @abstractmethod
     def startAsync(self, callback, programs, options):

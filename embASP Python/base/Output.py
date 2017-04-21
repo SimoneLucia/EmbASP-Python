@@ -1,4 +1,4 @@
-class Output:
+class Output(object):
     
     def __init__(self, output=None, errors=None):
         self._output = output

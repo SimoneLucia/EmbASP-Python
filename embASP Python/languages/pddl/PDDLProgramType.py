@@ -1,5 +1,3 @@
-from enum import Enum, auto
-
-class PDDLProgramType(Enum):
-    PROBLEM = auto()
-    DOMAIN = auto()
+class PDDLProgramType(object):
+    PROBLEM = 0
+    DOMAIN = 1

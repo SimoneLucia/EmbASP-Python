@@ -5,7 +5,7 @@ class PDDLMapper(Mapper):
     def __init__(self):
         if PDDLMapper.__Instance:
             raise("Instance already exists")
-        super().__init__()
+        super(PDDLMapper, self).__init__()
 
     @classmethod
     def getInstance(cls):

@@ -1,6 +1,7 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
-class Callback(ABC):
+class Callback(object):
+    __metaclass__ = ABCMeta
     
     @abstractmethod
     def callback(self, o):

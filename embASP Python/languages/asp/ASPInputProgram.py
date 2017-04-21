@@ -4,7 +4,7 @@ from languages.asp.ASPMapper import ASPMapper
 class ASPInputProgram(InputProgram):
     
     def __init__(self):
-        super().__init__()
+        super(ASPInputProgram, self).__init__()
     
     
     #ci serve il mapper singleton

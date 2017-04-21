@@ -7,7 +7,7 @@ import traceback
 class ClingoAnswerSets(AnswerSets):
     
     def __init__(self, out, err=None):
-        super().__init__(out, err)
+        super(ClingoAnswerSets, self).__init__(out, err)
         
 #     OUTPUT CON OPTIMUM NON TESTATO
     def _parse(self):

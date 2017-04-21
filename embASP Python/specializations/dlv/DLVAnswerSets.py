@@ -5,7 +5,7 @@ import re
 class DLVAnswerSets(AnswerSets):
     
     def __init__(self, out, err=None):
-        super().__init__(out, err)
+        super(DLVAnswerSets, self).__init__(out, err)
         
     def _parse(self):
         match = tuple(re.finditer(r"\{(.*)\}", self._output))

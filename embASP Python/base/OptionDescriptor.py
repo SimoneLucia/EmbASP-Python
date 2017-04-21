@@ -1,4 +1,4 @@
-class OptionDescriptor:
+class OptionDescriptor(object):
     
     def __init__(self, initial_option=None):
         self._options = initial_option

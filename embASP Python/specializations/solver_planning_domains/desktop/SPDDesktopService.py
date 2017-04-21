@@ -2,15 +2,16 @@ from platforms.desktop.DesktopService import DesktopService
 from languages.pddl.PDDLInputProgram import PDDLInputProgram
 import json
 import traceback
-import http.client
+import sys    
 from languages.pddl.PDDLProgramType import PDDLProgramType
 from specializations.solver_planning_domains.SPDPlan import SPDPlan
 from languages.pddl.PDDLException import PDDLException
 
+
 class SPDDesktopService(DesktopService):
     
     def __init__(self):
-        super().__init__("")
+        super(SPDDesktopService, self).__init__("")
         self.__solverUrlResourceName = "solver.planning.domains"
         self.__solverUrlPath = "/solve"
         
@@ -64,7 +65,12 @@ class SPDDesktopService(DesktopService):
     def __postJsonToURL(self, js):
         result = ""
         try:
-            connection = http.client.HTTPConnection(self.__solverUrlResourceName)
+            if sys.version_info < (3,0):
+                import httplib
+                connection = httplib.HTTPConnection(self.__solverUrlResourceName)
+            else:
+                import http.client
+                connection = http.client.HTTPConnection(self.__solverUrlResourceName)
             
             headers = {'Content-type': 'application/json'}
             

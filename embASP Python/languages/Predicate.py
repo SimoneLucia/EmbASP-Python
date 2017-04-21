@@ -1,5 +1,7 @@
-from abc import ABC
-class Predicate(ABC):
+from abc import ABCMeta
+
+class Predicate(object):
+    __metaclass__ = ABCMeta
     
     def __init__(self, terms):
         index = 0

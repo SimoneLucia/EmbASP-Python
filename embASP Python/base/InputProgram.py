@@ -1,4 +1,4 @@
-class InputProgram:
+class InputProgram(object):
     
     def __init__(self):
         self._programs = ""

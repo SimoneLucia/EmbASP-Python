@@ -3,7 +3,7 @@ from base.InputProgram import InputProgram
 class PDDLInputProgram(InputProgram):
     
     def __init__(self, progType):
-        super().__init__()
+        super(PDDLInputProgram, self).__init__()
         self.__programsType = progType
         
     def getProgramsType(self):

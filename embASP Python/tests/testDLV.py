@@ -2,7 +2,6 @@ from platforms.desktop.DesktopHandler import DesktopHandler
 from specializations.dlv.desktop.DLVDesktopService import DLVDesktopService
 from languages.asp.ASPInputProgram import ASPInputProgram
 from specializations.dlv.DLVAnswerSets import DLVAnswerSets
-from builtins import isinstance, input
 from languages.Predicate import Predicate
 from languages.asp.ASPMapper import ASPMapper
 from languages.Predicate import Predicate
@@ -38,31 +37,12 @@ class CountDownLatch():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Cell(Predicate):
       
     predicateName="cell"
     
     def __init__(self, row=None, column=None, value=None):
-        super().__init__([("row", int), ("column", int), ("value", int)])
+        super(Cell, self).__init__([("row", int), ("column", int), ("value", int)])
         self.row = row
         self.value = value
         self.column = column
@@ -130,6 +110,12 @@ inp.addFilesPath("app/src/test/resources/asp/sudoku")
 handler.addProgram(inp)
 
 
+# opt = OptionDescriptor()
+# 
+# opt.addOption("-filter=cell")
+# 
+# handler.addOption(opt)
+
 
 # out = handler.startSync()
 
@@ -152,14 +138,16 @@ class MyCalback(Callback):
 
 
 mc = MyCalback()
-
+ 
 handler.startAsync(mc)
-
+ 
 print("asincrono")
-
+ 
 lock.await()
-
+  
 out = mc.getOutput()
+
+# out = handler.startSync()
 
 mapp = ASPMapper.getInstance()
 
@@ -175,11 +163,13 @@ if (len(out.getAnswerSets()) != 0):
      
     for obj in ans.getAtoms():
         Matrix[obj.getRow()][obj.getColumn()] = obj.getValue()
-     
+    
+    tmp=""
     for i in range(9):
         for j in range(9):
-            print(str(Matrix[i][j]), end=" ")
-        print("")
+            tmp += str(Matrix[i][j]) + " "
+        print(tmp)
+        tmp=""
 else:
     print("output length = 0")          
 

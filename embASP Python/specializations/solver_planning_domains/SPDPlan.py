@@ -5,7 +5,7 @@ from languages.pddl.Action import Action
 class SPDPlan(Plan):
     
     def __init__(self, plan, error):
-        super().__init__(plan, error)
+        super(SPDPlan, self).__init__(plan, error)
         
     def _parse(self):
         if self._errors != "" or self._output=="":

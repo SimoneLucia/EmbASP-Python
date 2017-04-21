@@ -6,7 +6,7 @@ class ASPMapper(Mapper):
     def __init__(self):
         if ASPMapper.__Instance:
             raise("Instance already exists")
-        super().__init__()
+        super(ASPMapper, self).__init__()
 
     @classmethod
     def getInstance(cls):

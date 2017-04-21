@@ -1,3 +1,3 @@
 class PDDLException(Exception):
     def __init__(self, arg):
-        super().__init__(arg)
+        super(PDDLException, self).__init__(arg)

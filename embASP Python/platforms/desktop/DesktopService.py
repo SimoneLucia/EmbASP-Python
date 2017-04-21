@@ -71,11 +71,11 @@ class DesktopService(Service):
         if self._load_from_STDIN_option != "":
             lis.append(self._load_from_STDIN_option)
         
-        print(exep + " " + opt + files_paths + self._load_from_STDIN_option)
+        print(exep + " " + opt + " " + files_paths + self._load_from_STDIN_option)
         
         start = int(time.time()*1e+9)
         
-        proc = subprocess.Popen(lis, encoding="UTF-8", stdout=subprocess.PIPE, stdin=subprocess.PIPE, )
+        proc = subprocess.Popen(lis, universal_newlines=True, stdout=subprocess.PIPE, stdin=subprocess.PIPE, )
         
         output, error = proc.communicate(final_program)
         

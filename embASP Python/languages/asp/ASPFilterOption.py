@@ -1,6 +1,8 @@
-from abc import ABC
+from abc import ABCMeta
 from base.OptionDescriptor import OptionDescriptor
 
-class ASPFilterOption(ABC, OptionDescriptor):
+class ASPFilterOption(OptionDescriptor):
+    __metaclass__ = ABCMeta
+    
     def __init__(self):
-        super().__init__("-filter=")
+        super(ASPFilterOption, self).__init__("-filter=")

@@ -1,11 +1,12 @@
 from base.Output import Output
 from languages.pddl.PDDLMapper import PDDLMapper
-from abc import ABC
+from abc import ABCMeta
 
-class Plan(Output, ABC):
+class Plan(Output):
+    __metaclass__ = ABCMeta
     
     def __init__(self, plan, error):
-        super().__init__(plan, error)
+        super(Plan, self).__init__(plan, error)
         self._actionSequence = None
         self.__actionsObjects = None
         

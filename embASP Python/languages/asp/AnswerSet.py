@@ -1,5 +1,5 @@
 from languages.asp.ASPMapper import ASPMapper
-class AnserSet:
+class AnserSet(object):
     
     def __init__(self, value, weightMap=dict()):
         self.__value = value

@@ -3,7 +3,7 @@ from base.Handler import Handler
 class DesktopHandler(Handler):
     
     def __init__(self, service):
-        super().__init__()
+        super(DesktopHandler, self).__init__()
         self.__service = service
         
     def startAsync(self, c, program_index=None, option_index=None):

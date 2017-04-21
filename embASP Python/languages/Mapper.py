@@ -1,7 +1,8 @@
-from abc import abstractmethod, ABC
+from abc import ABCMeta, abstractmethod
 from languages.Predicate import Predicate
 
-class Mapper(ABC):
+class Mapper(object):
+    __metaclass__ = ABCMeta
     
     def __init__(self):
         self._predicateClass = dict()

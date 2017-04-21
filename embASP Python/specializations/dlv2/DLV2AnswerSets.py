@@ -7,7 +7,7 @@ import traceback
 class DLV2AnswerSets(AnswerSets):
     
     def __init__(self, out, err=None):
-        super().__init__(out, err)
+        super(DLV2AnswerSets, self).__init__(out, err)
         
 #     OUTPUT CON OPTIMUM NON TESTATO
     def _parse(self):
