@@ -1,1 +1,5 @@
 *.pyc
+*.project
+*.pydevproject
+embASP Python/.pydevproject
+embASP Python/.project

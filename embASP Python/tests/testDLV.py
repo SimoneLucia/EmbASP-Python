@@ -9,29 +9,6 @@ import threading
 from base.Callback import Callback
 
 
-class CountDownLatch():
-    def __init__(self, count=1):
-        self.count = count
-        self.lock = threading.Condition()
-
-    def count_down(self):
-        self.lock.acquire()
-        self.count -= 1
-        if self.count <= 0:
-            self.lock.notifyAll()
-        self.lock.release()
-
-    def await(self):
-        self.lock.acquire()
-        while self.count > 0:
-            self.lock.wait()
-        self.lock.release()
-
-
-
-
-
-
 
 class Cell(Predicate):
       
@@ -42,10 +19,6 @@ class Cell(Predicate):
         self.row = row
         self.value = value
         self.column = column
-          
-#     @classmethod
-#     def getPredicateName(cls):
-#         return cls.predicateName
           
     def getRow(self):
         return self.row
@@ -61,13 +34,11 @@ class Cell(Predicate):
         self.value = value
         
         
-        
-lock = CountDownLatch(1)
 
 
         
         
-w, h = 9, 9;
+n = 9;
 inputMatrix = [ [ 1, 0, 0, 0, 0, 7, 0, 9, 0 ],
                 [ 0, 3, 0, 0, 2, 0, 0, 0, 8 ],
                 [ 0, 0, 9, 6, 0, 0, 5, 0, 0 ],
@@ -118,15 +89,29 @@ handler.addProgram(inp)
 
 class MyCalback(Callback):
     
-    def __init__(self):
+    def __init__(self, count=1):
+        self.count = count
+        self.lock = threading.Condition()
         self.ans=None
-        self.lo = lock
+        
+    def __count_down(self):
+        self.lock.acquire()
+        self.count -= 1
+        if self.count <= 0:
+            self.lock.notifyAll()
+        self.lock.release()
+        
+    def await(self):
+        self.lock.acquire()
+        while self.count > 0:
+            self.lock.wait()
+        self.lock.release()
     
     def callback(self, o):
         if (not isinstance(o, AnswerSets)):
             return
         self.ans = o
-        self.lo.count_down()
+        self.__count_down()
     
     def getOutput(self):
         return self.ans
@@ -134,18 +119,17 @@ class MyCalback(Callback):
 
 
 mc = MyCalback()
- 
-handler.startAsync(mc)
- 
-print("asincrono")
- 
-lock.await()
   
+handler.startAsync(mc)
+  
+print("asincrono")
+  
+mc.await()
+   
 out = mc.getOutput()
 
 # out = handler.startSync()
 
-mapp = ASPMapper.getInstance()
 
 
 if not isinstance(out, Output):
@@ -155,7 +139,7 @@ if not isinstance(out, Output):
 if (len(out.getAnswerSets()) != 0):
     ans = out.getAnswerSets()[0]
     
-    Matrix = [[0 for x in range(w)] for y in range(h)] 
+    Matrix = [[0 for x in range(n)] for y in range(n)] 
      
     for obj in ans.getAtoms():
         Matrix[obj.getRow()][obj.getColumn()] = obj.getValue()

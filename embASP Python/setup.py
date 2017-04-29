@@ -17,14 +17,14 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='embASP',
-      version='0.2',
+      version='0.3',
       description='embASP',
       long_description=long_description,
       author='Department of Mathematics and Computer Science, University of Calabria',
       license='MIT',
       author_email='embasp@mat.unical.it',
       url='https://www.mat.unical.it/calimeri/projects/embasp/',
-      packages=find_packages(),
+      packages=find_packages(exclude=["*.unitTests", "*.unitTests.*", "unitTests.*", "unitTests"]),
       
       classifiers=[
         # How mature is this project? Common values are
