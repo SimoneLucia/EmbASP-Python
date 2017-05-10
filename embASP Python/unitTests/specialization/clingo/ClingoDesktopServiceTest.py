@@ -2,8 +2,8 @@ import unittest
 from languages.asp.ASPInputProgram import ASPInputProgram
 from platforms.desktop.DesktopHandler import DesktopHandler
 from base.Output import Output
-from unitTests.specialization.dlv.Cell import Cell
-from unitTests.specialization.dlv.MyCallback import MyCallback
+from unitTests.specialization.clingo.Cell import Cell
+from unitTests.specialization.clingo.MyCallback import MyCallback
 import sys
 import os
 from specializations.clingo.desktop.ClingoDesktopService import ClingoDesktopService
@@ -25,7 +25,7 @@ class ClingoDesktopServiceTest(unittest.TestCase):
     
     def getPath(self):
         OS = sys.platform
-        path = os.path.join("..", "..", "app", "src", "test", "resources", "asp", "executables")
+        path = os.path.join("..", "..", "resources", "asp", "executables")
         if OS.startswith("win32"):
             if sys.maxsize > 2**32:
                 path = os.path.join(path, "clingo64.exe")
@@ -51,7 +51,7 @@ class ClingoDesktopServiceTest(unittest.TestCase):
                     if (self.inputMatrix[i][j] != 0):
                         inp.addObjectInput(Cell(i,j,self.inputMatrix[i][j]))
                       
-            inp.addFilesPath(os.path.join("..", "..", "app", "src", "test", "resources", "asp", "sudoku"))
+            inp.addFilesPath(os.path.join("..", "..","resources", "asp", "sudoku"))
              
             handler.addProgram(inp)
             
@@ -90,7 +90,7 @@ class ClingoDesktopServiceTest(unittest.TestCase):
                 tmp=""
             
         except Exception as e:
-            self.fail("Exception " + e.message)
+            self.fail("Exception " + str(e))
 
 if __name__ == '__main__':
     unittest.main()
