@@ -17,7 +17,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='embASP',
-      version='0.3',
+      version='0.4',
       description='embASP',
       long_description=long_description,
       author='Department of Mathematics and Computer Science, University of Calabria',

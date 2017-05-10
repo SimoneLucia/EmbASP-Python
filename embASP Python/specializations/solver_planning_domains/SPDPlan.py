@@ -18,7 +18,7 @@ class SPDPlan(Plan):
                 for x in arrayPlan:
                     self._actionSequence.append(Action(x["name"]))
             else:
-                self._errors += " " + parsed_json["result"]
+                self._errors += " " + str(parsed_json["result"])
                 
         except ValueError as e:
             self._errors += "ParseException: " + e

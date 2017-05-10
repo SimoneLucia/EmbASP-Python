@@ -32,7 +32,7 @@ class ASPMapperTest(unittest.TestCase):
             self.assertIsNone(noneObject)
             
         except Exception as e:
-            self.fail(e.message)
+            self.fail(str(e))
 
 
 if __name__ == '__main__':

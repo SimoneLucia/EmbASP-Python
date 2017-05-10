@@ -77,12 +77,15 @@ class SPDDesktopService(DesktopService):
             connection.request('POST', self.__solverUrlPath, js, headers)
             
             response = connection.getresponse()
+            
             if response.status == 200:
                 result = response.read().decode()
             else:
                 raise PDDLException("HTTP connection error, response code : " + str(response.status) + " response message : " + str(response.reason))
         except:
             raise PDDLException("Impossible to perform HTTP connection")
+        finally:
+            connection.close()
         return result
     
     

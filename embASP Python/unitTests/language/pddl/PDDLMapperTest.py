@@ -19,7 +19,7 @@ class PDDLMapperTest(unittest.TestCase):
             self.assertEqual("b", object.getBlock())
             
         except Exception as e:
-            self.fail(e.message)
+            self.fail(str(e))
 
 
 if __name__ == '__main__':
