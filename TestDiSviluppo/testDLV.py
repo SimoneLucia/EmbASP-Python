@@ -1,7 +1,6 @@
 from platforms.desktop.DesktopHandler import DesktopHandler
 from specializations.dlv.desktop.DLVDesktopService import DLVDesktopService
 from languages.asp.ASPInputProgram import ASPInputProgram
-from languages.asp.ASPMapper import ASPMapper
 from languages.Predicate import Predicate
 from base.Output import Output
 from languages.asp.AnswerSets import AnswerSets

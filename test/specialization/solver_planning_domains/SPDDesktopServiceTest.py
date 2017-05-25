@@ -5,9 +5,9 @@ from specializations.solver_planning_domains.desktop.SPDDesktopService import SP
 from languages.pddl.PDDLInputProgram import PDDLInputProgram
 from languages.pddl.PDDLProgramType import PDDLProgramType
 from languages.pddl.PDDLMapper import PDDLMapper
-from unitTests.specialization.solver_planning_domains.MyCallback import MyCallback
+from test.specialization.solver_planning_domains.MyCallback import MyCallback
 import time
-from unitTests.specialization.solver_planning_domains.PickUp import PickUp
+from test.specialization.solver_planning_domains.PickUp import PickUp
 
 
 

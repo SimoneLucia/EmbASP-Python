@@ -1,6 +1,6 @@
 import unittest
 from languages.pddl.PDDLMapper import PDDLMapper
-from unitTests.specialization.solver_planning_domains.PickUp import PickUp
+from test.specialization.solver_planning_domains.PickUp import PickUp
 
 
 class PDDLMapperTest(unittest.TestCase):

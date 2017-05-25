@@ -1,6 +1,6 @@
 import unittest
 from languages.asp.ASPMapper import ASPMapper
-from unitTests.specialization.dlv.Cell import Cell
+from test.specialization.dlv.Cell import Cell
 
 
 

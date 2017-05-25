@@ -3,8 +3,8 @@ from languages.asp.ASPInputProgram import ASPInputProgram
 from platforms.desktop.DesktopHandler import DesktopHandler
 from specializations.dlv.desktop.DLVDesktopService import DLVDesktopService
 from base.Output import Output
-from unitTests.specialization.dlv.Cell import Cell
-from unitTests.specialization.dlv.MyCallback import MyCallback
+from test.specialization.dlv.Cell import Cell
+from test.specialization.dlv.MyCallback import MyCallback
 import sys
 import os
 
