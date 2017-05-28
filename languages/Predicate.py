@@ -7,8 +7,7 @@ class Predicate(object):
         index = 0
         self.__mapTermsType = dict()
         for val in terms:
-            if len(terms) > 1 and len(val) > 2 and isinstance(val, tuple):
-                print(str(terms) + "  dio cane  " + str(val))
+            if len(terms) > 1 and len(val) > 2:
                 raise Exception("Bad definition of term")
             self.__mapTermsType[index] = val
             index += 1
