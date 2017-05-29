@@ -81,7 +81,8 @@ class DesktopService(Service):
         
         end = int(time.time()*1e+9)
         
-        print("time: " + str(end - start))
+        print("Total time : " + str(end - start))
+        print("")
         
         return self._getOutput(output, error)
         
