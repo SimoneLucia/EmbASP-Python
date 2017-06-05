@@ -2,6 +2,8 @@ from abc import ABCMeta
 from base.OptionDescriptor import OptionDescriptor
 
 class ASPFilterOption(OptionDescriptor):
+    """Generic filter option for ASP solver"""
+    
     __metaclass__ = ABCMeta
     
     def __init__(self):

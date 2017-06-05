@@ -2,11 +2,12 @@ from abc import ABCMeta, abstractmethod
 from languages.Predicate import Predicate
 
 class Mapper(object):
+    """Base class, contains methods used to transform Objects into InputProgram"""
     __metaclass__ = ABCMeta
     
     def __init__(self):
         self._predicateClass = dict()
-#         self._classSetterMethod = dict()
+        """Represents a dict, where are stored a string name of a predicate as a key, and a corresponding Class element"""
         
     @abstractmethod
     def _getActualString(self, predicate, parametersMap):
@@ -19,14 +20,11 @@ class Mapper(object):
         pass
     
     def getClass(self, predicate):
+        """Returns a string for the given predicate name string"""
         return self._predicateClass.get(predicate)
     
     def __populateObject(self, cl, parameters, obj):
-#         index=0
-#         for field in set(obj.__dict__.keys()):
-#           VALORE DELLA POSIZIONE DEL TERM AL POSTO DI INDEX
         for key, value in obj.getTermsType().items():
-#             term = index
             if len(value) == 2:
                 nameMethod = "set" + value[0][:1].upper() + value[0][1:]
             else:
@@ -37,11 +35,11 @@ class Mapper(object):
             else:
                 getattr(obj, nameMethod)(parameters[key])
             
-#             index+=1
-            
-
-    
     def getObject(self, string):
+        """Returns an Object for the given string
+        The parameter string is a string from witch data are extrapolated
+        The method return a Object for the given string data
+        """
         predicate = self._getPredicate(string)
         if (predicate == None):
             return None
@@ -56,6 +54,9 @@ class Mapper(object):
         return obj
     
     def registerClass(self, cl):
+        """Insert an object into _predicateClass
+        The method return a string representing pairing key of _predicateClass
+        """
         if (not issubclass(cl,Predicate)):
             raise("input class is not subclass of Predicate")
         predicate = cl.getPredicateName()
@@ -65,6 +66,7 @@ class Mapper(object):
         return predicate
     
     def unregisterClass(self, cl):
+        """Remove an object from _predicateClass"""
         if(not issubclass(cl, Predicate)):
             raise("input class is not subclass of Predicate")
         predicate = cl.getPredicateName()
@@ -72,6 +74,10 @@ class Mapper(object):
         
     
     def getString(self, obj):
+        """Returns data for the given Object
+        The parameter obj is the Object from witch data are extrapolated
+        The method return a string data for the given Object in a String format
+        """
         predicate = self.registerClass(obj.__class__)
         parametersMap = dict()
 #         index=0
