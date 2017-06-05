@@ -8,10 +8,14 @@ import time
 from threading import Thread
 
 class DesktopService(Service):
+    """Is a specialization for a Desktop platform"""
     
     def __init__(self, exe_path):
         self._exe_path = exe_path
+        """Stores solver's executable path"""
+        
         _load_from_STDIN_option = None
+        """Stores option string for enable solver to read from standard input"""
         
     def getExePath(self):
         return self._exe_path
@@ -21,10 +25,13 @@ class DesktopService(Service):
         pass
     
     def setExePath(self, exe_path):
+        """Set _exe_path to a new path
+        The parameter exe_path is a string representing the path for the new solver
+        """
         self._exe_path = exe_path
     
     def startAsync(self, callback, programs, options):
-        
+        """Start a new process for the _exe_path and starts solving in Asyncronously way"""
         class myThread(Thread):
             def __init__(self, startSync):
                 Thread.__init__(self)
@@ -38,6 +45,7 @@ class DesktopService(Service):
 
     
     def startSync(self, programs, options):
+        """Start a new process for the _exe_path and starts solving in Syncronously way"""
         option = ""
         for o in options:
             if(o != None):
