@@ -7,8 +7,8 @@ from languages.pddl.PDDLProgramType import PDDLProgramType
 from specializations.solver_planning_domains.SPDPlan import SPDPlan
 from languages.pddl.PDDLException import PDDLException
 
-
 class SPDDesktopService(DesktopService):
+    """Is an extention of DesktopService for SPDD's solver"""
     
     def __init__(self):
         super(SPDDesktopService, self).__init__("")
@@ -45,8 +45,6 @@ class SPDDesktopService(DesktopService):
         
         json_data = json.dumps(data)        
 
-        
-
         return json_data
         
                 
@@ -57,7 +55,6 @@ class SPDDesktopService(DesktopService):
                 toReturn += self.__readFile(s)
                 toReturn += separator
             except IOError:
-#                 print ("Error: can\'t read data from file")
                 traceback.print_exc()
         return toReturn
     
@@ -88,7 +85,6 @@ class SPDDesktopService(DesktopService):
             connection.close()
         return result
     
-    
     def __readFile(self, s):
         everything = ""
         with open(s, 'r') as f:
@@ -97,7 +93,6 @@ class SPDDesktopService(DesktopService):
             finally:
                 f.close()
         return everything
-           
            
     def _getOutput(self, output, error):
         return SPDPlan(output, error)

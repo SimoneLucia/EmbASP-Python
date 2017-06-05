@@ -3,13 +3,12 @@ import re
 from languages.asp.AnswerSet import AnserSet
 import traceback
 
-
 class ClingoAnswerSets(AnswerSets):
+    """Represents Clingo's answersets"""
     
     def __init__(self, out, err=None):
         super(ClingoAnswerSets, self).__init__(out, err)
         
-#     OUTPUT CON OPTIMUM NON TESTATO
     def _parse(self):
         optimum = "OPTIMUM" in self._output
         
@@ -50,13 +49,3 @@ class ClingoAnswerSets(AnswerSets):
                 self._answersets.append(AnserSet(answerSetList))
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-                

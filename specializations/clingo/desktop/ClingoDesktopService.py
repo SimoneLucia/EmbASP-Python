@@ -1,8 +1,8 @@
 from platforms.desktop.DesktopService import DesktopService
 from specializations.clingo.ClingoAnswerSets import ClingoAnswerSets
 
-
 class ClingoDesktopService(DesktopService):
+    """Is an extention of DesktopService for Clingo's solver"""
     
     def __init__(self, exe_path):
         super(ClingoDesktopService, self).__init__(exe_path)

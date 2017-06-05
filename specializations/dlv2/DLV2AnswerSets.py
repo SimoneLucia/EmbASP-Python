@@ -3,13 +3,12 @@ import re
 from languages.asp.AnswerSet import AnserSet
 import traceback
 
-
 class DLV2AnswerSets(AnswerSets):
+    """Represents Dlv2's answersets"""
     
     def __init__(self, out, err=None):
         super(DLV2AnswerSets, self).__init__(out, err)
         
-#     OUTPUT CON OPTIMUM NON TESTATO
     def _parse(self):
         optimum = "OPTIMUM" in self._output
         

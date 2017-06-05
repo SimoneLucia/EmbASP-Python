@@ -2,6 +2,7 @@ from platforms.desktop.DesktopService import DesktopService
 from specializations.dlv.DLVAnswerSets import DLVAnswerSets
 
 class DLVDesktopService(DesktopService):
+    """Is an extention of DesktopService for DLV's solver"""
     
     def __init__(self, exe_path):
         super(DLVDesktopService, self).__init__(exe_path)

@@ -3,6 +3,7 @@ from languages.asp.AnswerSet import AnserSet
 import re
 
 class DLVAnswerSets(AnswerSets):
+    """Represent an AnswerSet specific for DLV"""
     
     def __init__(self, out, err=None):
         super(DLVAnswerSets, self).__init__(out, err)

@@ -3,6 +3,7 @@ from base.OptionDescriptor import OptionDescriptor
 from specializations.dlv2.DLV2AnswerSets import DLV2AnswerSets
 
 class DLV2DesktopService(DesktopService):
+    """Is an extention of DesktopService for DLV2's solver"""
     
     def __init__(self, exe_path):
         super(DLV2DesktopService, self).__init__(exe_path)
