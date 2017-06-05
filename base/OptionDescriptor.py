@@ -3,13 +3,13 @@ class OptionDescriptor(object):
     
     def __init__(self, initial_option=None):
         self._options = initial_option
-        """where options are stored"""
+        """Where options are stored"""
         
         self._separator = ""
-        """used as option separator"""
+        """Used as option separator"""
         
     def addOption(self, option):
-        """concatenate a new option in a string format to the current _options
+        """Concatenate a new option in a string format to the current _options
         The parameter option is the string to be concatenated
         """
         if (self._options == None or self._options == ""):
@@ -18,7 +18,7 @@ class OptionDescriptor(object):
             self._options += self._separator + option
     
     def clear(self):
-        """after using this method the _options variable will be empty"""
+        """After using this method the _options variable will be empty"""
         self._options = ""
         
     def getOptions(self):
@@ -26,7 +26,7 @@ class OptionDescriptor(object):
         return self._options
     
     def getSeparator(self):
-        """get separator character"""
+        """Get separator character"""
         return self._separator
     
     def setOptions(self, option):

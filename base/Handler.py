@@ -9,10 +9,10 @@ class Handler(object):
     
     def __init__(self):
         self._programs = dict()
-        """is where InputProgram elements are stored."""
+        """Is where InputProgram elements are stored."""
         
         self._options = dict()
-        """is where OptionDescriptor elements are stored"""
+        """Is where OptionDescriptor elements are stored"""
         
     def addOption(self, o):
         """Add a new element inside _options dict.
@@ -35,8 +35,6 @@ class Handler(object):
         return current_value
     
     def _collect_options(self, option_index):
-        """
-        """
         input_option = list()
         if (not option_index):
             for k in self._options.keys():

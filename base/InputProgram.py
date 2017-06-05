@@ -5,24 +5,24 @@ class InputProgram(object):
         """Creates a new programs , setting space as default separator"""
         
         self._programs = ""
-        """where programs data is stored"""
+        """Where programs data is stored"""
         
         self.__files_paths = list()
-        """where associated files are stored"""
+        """Where associated files are stored"""
         
         self._separator = " "
-        """used as separator for programs"""
+        """Used as separator for programs"""
 
 
     def addObjectInput(self,inputObj):
-        raise "functionality not implemented"
+        raise "Functionality not implemented"
 
     def addObjectsInput(self, inputObjs):
         for inputObj in inputObjs:
             self.addObjectInput(inputObj)
 
     def addFilesPath(self, file_path):
-        """add a new file path into __files_paths
+        """Add a new file path into __files_paths
         The parameter file_path represents a new file path
         """
         self.__files_paths.append(file_path)
@@ -59,7 +59,7 @@ class InputProgram(object):
         return self._programs
 
     def getSeparator(self):
-        """separator the _separator character"""
+        """Separator the _separator character"""
         return self._separator
 
     def getStringOfFilesPaths(self):
@@ -71,7 +71,7 @@ class InputProgram(object):
         return to_return
 
     def setPrograms(self, programs):
-        """sets _programs value to the new given one
+        """Sets _programs value to the new given one
         The parameter programs, rapresents new value
         """
         self._programs = programs

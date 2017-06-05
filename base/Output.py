@@ -1,5 +1,5 @@
 class Output(object):
-    """represents a generic output for a solver"""
+    """Represents a generic output for a solver"""
     
     def __init__(self, output=None, errors=None):
         self._output = output
