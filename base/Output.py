@@ -2,11 +2,8 @@ class Output(object):
     """Represents a generic output for a solver"""
     
     def __init__(self, output=None, errors=None):
-        self._output = output
-        """Variable in which results are stored"""
-        
-        self._errors = errors
-        """The errors thrown by the solver"""
+        self._output = output  # Variable in which results are stored
+        self._errors = errors  # The errors thrown by the solver
     
     def getErrors(self):
         """Get error string"""

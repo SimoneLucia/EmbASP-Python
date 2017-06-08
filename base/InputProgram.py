@@ -3,15 +3,9 @@ class InputProgram(object):
     
     def __init__(self):
         """Creates a new programs , setting space as default separator"""
-        
-        self._programs = ""
-        """Where programs data is stored"""
-        
-        self.__files_paths = list()
-        """Where associated files are stored"""
-        
-        self._separator = " "
-        """Used as separator for programs"""
+        self._programs = ""  # Where programs data is stored
+        self.__files_paths = list()  # Where associated files are stored
+        self._separator = " "  # Used as separator for programs
 
 
     def addObjectInput(self,inputObj):

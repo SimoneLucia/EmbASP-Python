@@ -8,11 +8,8 @@ class Handler(object):
     __metaclass__ = ABCMeta
     
     def __init__(self):
-        self._programs = dict()
-        """Is where InputProgram elements are stored."""
-        
-        self._options = dict()
-        """Is where OptionDescriptor elements are stored"""
+        self._programs = dict()  # Is where InputProgram elements are stored.
+        self._options = dict()  # Is where OptionDescriptor elements are stored
         
     def addOption(self, o):
         """Add a new element inside _options dict.

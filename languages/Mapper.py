@@ -6,8 +6,7 @@ class Mapper(object):
     __metaclass__ = ABCMeta
     
     def __init__(self):
-        self._predicateClass = dict()
-        """Represents a dict, where are stored a string name of a predicate as a key, and a corresponding Class element"""
+        self._predicateClass = dict()  # Represents a dict, where are stored a string name of a predicate as a key, and a corresponding Class element
         
     @abstractmethod
     def _getActualString(self, predicate, parametersMap):

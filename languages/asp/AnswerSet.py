@@ -4,14 +4,9 @@ class AnserSet(object):
     """A collection of data representing a generic Answer Set"""
     
     def __init__(self, value, weightMap=dict()):
-        self.__value = value
-        """Where data of answer set is stored"""
-        
-        self.__weight_map = weightMap
-        """Where weights of the answer set are stored"""
-        
-        self.__atoms = set()
-        """Where Answer set's atoms are stored"""
+        self.__value = value  # Where data of answer set is stored
+        self.__weight_map = weightMap  # Where weights of the answer set are stored
+        self.__atoms = set()  # Where Answer set's atoms are stored
         
     def getAnswerSet(self):
         """Return the current __value data

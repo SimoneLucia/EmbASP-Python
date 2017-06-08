@@ -11,11 +11,8 @@ class DesktopService(Service):
     """Is a specialization for a Desktop platform"""
     
     def __init__(self, exe_path):
-        self._exe_path = exe_path
-        """Stores solver's executable path"""
-        
-        _load_from_STDIN_option = None
-        """Stores option string for enable solver to read from standard input"""
+        self._exe_path = exe_path  # Stores solver's executable path
+        _load_from_STDIN_option = None  # Stores option string for enable solver to read from standard input
         
     def getExePath(self):
         return self._exe_path

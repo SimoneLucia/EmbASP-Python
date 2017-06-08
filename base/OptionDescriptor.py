@@ -2,11 +2,8 @@ class OptionDescriptor(object):
     """Represents options for a generic ASP programs"""
     
     def __init__(self, initial_option=None):
-        self._options = initial_option
-        """Where options are stored"""
-        
-        self._separator = ""
-        """Used as option separator"""
+        self._options = initial_option  # Where options are stored
+        self._separator = ""  # Used as option separator
         
     def addOption(self, option):
         """Concatenate a new option in a string format to the current _options

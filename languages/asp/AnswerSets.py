@@ -5,9 +5,7 @@ class AnswerSets(Output):
     
     def __init__(self, out, err=None):
         super(AnswerSets, self).__init__(out, err)
-        
-        self._answersets = None
-        """Where Answer Sets are stored"""
+        self._answersets = None  # Where Answer Sets are stored
         
     def getAnswerSets(self):
         """Return a set of AnswerSet"""
