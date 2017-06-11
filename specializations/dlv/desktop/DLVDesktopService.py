@@ -9,4 +9,5 @@ class DLVDesktopService(DesktopService):
         self._load_from_STDIN_option = "--"
         
     def _getOutput(self, output, error):
+        """Return a new DLVAnwerSets from output and error given"""
         return DLVAnswerSets(output, error)

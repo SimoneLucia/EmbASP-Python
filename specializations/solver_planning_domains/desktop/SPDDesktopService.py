@@ -16,6 +16,7 @@ class SPDDesktopService(DesktopService):
         self.__solverUrlPath = "/solve"
         
     def __createJson(self, pddlInputProgram):
+        """Return a json object represents InputProgram"""
         problem = ""
         domain = ""
         
@@ -49,6 +50,7 @@ class SPDDesktopService(DesktopService):
         
                 
     def __getFromFile(self, filesPaths, separator):
+        """Read file from list of path given and return their content, separate by separator string given"""
         toReturn = ""
         for s in filesPaths:
             try:
@@ -60,6 +62,7 @@ class SPDDesktopService(DesktopService):
     
     
     def __postJsonToURL(self, js):
+        """Post a json string given to SPD solver server and return result"""
         result = ""
         try:
             if sys.version_info < (3,0):
@@ -86,6 +89,7 @@ class SPDDesktopService(DesktopService):
         return result
     
     def __readFile(self, s):
+        """Reand file from path given and return her content"""
         everything = ""
         with open(s, 'r') as f:
             try:
@@ -95,9 +99,11 @@ class SPDDesktopService(DesktopService):
         return everything
            
     def _getOutput(self, output, error):
+        """Return SPDPlan object from output and error strings given"""
         return SPDPlan(output, error)
     
     def startSync(self, programs, options):
+        """Return SPDPlan object represent output generated from SPD solver server"""
         if not programs:
             return self._getOutput("", "PDDLInputProgram not defined")
         try:

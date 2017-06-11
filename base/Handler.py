@@ -32,6 +32,9 @@ class Handler(object):
         return current_value
     
     def _collect_options(self, option_index):
+        """Return a list of options in _options dict, according to set of indexes given.
+        If option_index is empty, the method return a list of all options.
+        """
         input_option = list()
         if (not option_index):
             for k in self._options.keys():
@@ -42,6 +45,9 @@ class Handler(object):
         return input_option
     
     def _collect_programs(self, program_index):
+        """Return a list of programs in _programs dict, according to set of indexes given.
+        If program_index is empty, the method return a list of all program.
+        """
         input_programs = list()
         if (not program_index):
             for k in self._programs.keys():

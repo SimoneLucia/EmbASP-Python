@@ -31,6 +31,7 @@ class AnserSet(object):
         return self.__weight_map
     
     def __str__(self):
+        """Overload string method"""
         return str(self.__value)
     
 

@@ -23,16 +23,15 @@ class Mapper(object):
         return self._predicateClass.get(predicate)
     
     def __populateObject(self, cl, parameters, obj):
+        """Sets a fields of object from set of parameters given, by invoking setters methods of object"""
         for key, value in obj.getTermsType().items():
-            if len(value) == 2:
+            if len(value) == 2 and isinstance(value, tuple):
                 nameMethod = "set" + value[0][:1].upper() + value[0][1:]
-            else:
-                nameMethod = "set" + value[:1].upper() + value[1:]
-            
-            if  len(value) == 2 and value[1] is int:
                 getattr(obj, nameMethod)(int(parameters[key]))
             else:
+                nameMethod = "set" + value[:1].upper() + value[1:]
                 getattr(obj, nameMethod)(parameters[key])
+                
             
     def getObject(self, string):
         """Returns an Object for the given string
@@ -79,15 +78,11 @@ class Mapper(object):
         """
         predicate = self.registerClass(obj.__class__)
         parametersMap = dict()
-#         index=0
-#         for field in set(obj.__dict__.keys()):
         for key, value in obj.getTermsType().items():
-            if len(value) == 2:
+            if len(value) == 2 and isinstance(value, tuple):
                 val = getattr(obj, "get" + value[0][:1].upper() + value[0][1:])()
             else:
                 val = getattr(obj, "get" + value[:1].upper() + value[1:])()
-#           VALORE DELLA POSIZIONE DEL TERM AL POSTO DI INDEX
             parametersMap[key] = val
-#             index+=1
         return self._getActualString(predicate, parametersMap)
         

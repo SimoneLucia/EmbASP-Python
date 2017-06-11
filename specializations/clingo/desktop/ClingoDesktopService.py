@@ -9,10 +9,13 @@ class ClingoDesktopService(DesktopService):
         self._load_from_STDIN_option = "-"
         
     def _getOutput(self, output, error):
+        """Return a new ClingoAnwerSets from output and error given"""
         return ClingoAnswerSets(output, error)
     
     def startSync(self, programs, options):
+        """Call startSync method of a superclass, and return her output object"""
         return super(ClingoDesktopService, self).startSync(programs, options)
     
     def startAsync(self, callback, programs, options):
+        """Call startAsync method of a superclass"""
         super(ClingoDesktopService, self).startAsync(callback, programs, options)

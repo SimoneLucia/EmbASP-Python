@@ -10,6 +10,7 @@ class ClingoAnswerSets(AnswerSets):
         super(ClingoAnswerSets, self).__init__(out, err)
         
     def _parse(self):
+        """Create new AnswerSet object represents output come from solver execution and add this in _answersets field"""
         optimum = "OPTIMUM" in self._output
         
         if not optimum:

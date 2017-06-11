@@ -9,6 +9,7 @@ class DLVAnswerSets(AnswerSets):
         super(DLVAnswerSets, self).__init__(out, err)
         
     def _parse(self):
+        """Create new AnswerSet object represents output come from solver execution and add this in _answersets field"""
         match = tuple(re.finditer(r"\{(.*)\}", self._output))
         for m in match:
             answerSet = m.group()
@@ -17,10 +18,3 @@ class DLVAnswerSets(AnswerSets):
             for ma in matcherAnswerSet:
                 answerSetList.add(ma.group(1))
             self._answersets.append(AnserSet(answerSetList))
-    
-
-    
-    
-# output_example = "{node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"r\"), color(\"nodo2\",\"g\"), color(\"nodo3\",\"b\")}\n\n{node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"g\"), color(\"nodo2\",\"r\"), color(\"nodo3\",\"b\")}\n\n{node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"r\"), color(\"nodo2\",\"b\"), color(\"nodo3\",\"g\")}\n\n{node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"b\"), color(\"nodo2\",\"r\"), color(\"nodo3\",\"g\")}\n\n{node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"g\"), color(\"nodo2\",\"b\"), color(\"nodo3\",\"r\")}\n\n{node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"b\"), color(\"nodo2\",\"g\"), color(\"nodo3\",\"r\")}"
-
-# {node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"r\"), color(\"nodo2\",\"g\"), color(\"nodo3\",\"b\")}\n\n{node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"g\"), color(\"nodo2\",\"r\"), color(\"nodo3\",\"b\")}\n\n{node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"r\"), color(\"nodo2\",\"b\"), color(\"nodo3\",\"g\")}\n\n{node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"b\"), color(\"nodo2\",\"r\"), color(\"nodo3\",\"g\")}\n\n{node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"g\"), color(\"nodo2\",\"b\"), color(\"nodo3\",\"r\")}\n\n{node(\"nodo1\"), node(\"nodo2\"), node(\"nodo3\"), arc(\"nodo1\",\"nodo2\"), arc(\"nodo2\",\"nodo3\"), arc(\"nodo3\",\"nodo1\"), color(\"nodo1\",\"b\"), color(\"nodo2\",\"g\"), color(\"nodo3\",\"r\")}

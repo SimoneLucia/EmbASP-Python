@@ -4,7 +4,9 @@ class Action(object):
         self.__name = name
         
     def getName(self):
+        """Return the name of Action"""
         return self.__name
     
     def setName(self, name):
+        """Sets the name of Action"""
         self.name = name

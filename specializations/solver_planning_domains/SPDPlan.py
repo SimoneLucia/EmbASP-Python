@@ -9,6 +9,7 @@ class SPDPlan(Plan):
         super(SPDPlan, self).__init__(plan, error)
         
     def _parse(self):
+        """Create new Action objects represents output given in a json forms and add this in _actionSequence field"""
         if self._errors != "" or self._output=="":
             return
         try:
