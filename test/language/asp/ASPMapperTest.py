@@ -13,17 +13,17 @@ class ASPMapperTest(unittest.TestCase):
         try:
             instance.registerClass(Cell)
             
-            object = instance.getObject("cell(1,2,5)")
+            obj = instance.getObject("cell(1,2,5)")
         
-            self.assertTrue(isinstance(object, Cell))
+            self.assertTrue(isinstance(obj, Cell))
             
-            self.assertEqual(1, object.getRow())
+            self.assertEqual(1, obj.getRow())
             
-            self.assertEqual(2, object.getColumn())
+            self.assertEqual(2, obj.getColumn())
             
-            self.assertEqual(5, object.getValue())
+            self.assertEqual(5, obj.getValue())
             
-            self.assertEqual("cell(1,2,5)", instance.getString(object))
+            self.assertEqual("cell(1,2,5)", instance.getString(obj))
             
             instance.unregisterClass(Cell)
             
