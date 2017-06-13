@@ -25,7 +25,7 @@ class Mapper(object):
     def __populateObject(self, cl, parameters, obj):
         """Sets a fields of object from set of parameters given, by invoking setters methods of object"""
         for key, value in obj.getTermsType().items():
-            if len(value) == 2 and isinstance(value, tuple):
+            if isinstance(value, tuple) and len(value) == 2:
                 nameMethod = "set" + value[0][:1].upper() + value[0][1:]
                 getattr(obj, nameMethod)(int(parameters[key]))
             else:
@@ -79,7 +79,7 @@ class Mapper(object):
         predicate = self.registerClass(obj.__class__)
         parametersMap = dict()
         for key, value in obj.getTermsType().items():
-            if len(value) == 2 and isinstance(value, tuple):
+            if isinstance(value, tuple) and len(value) == 2:
                 val = getattr(obj, "get" + value[0][:1].upper() + value[0][1:])()
             else:
                 val = getattr(obj, "get" + value[:1].upper() + value[1:])()
