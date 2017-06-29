@@ -6,9 +6,9 @@ class Predicate(object):
     
     def __init__(self, terms):
         index = 0
-        self.__mapTermsType = dict()  # Dict where positional id and set of predicate string name and optionally int type are stored
+        self.__mapTermsType = dict()  # Dict where positional id and set of terms string name and optionally int type are stored
         for val in terms:
-            if len(terms) > 1 and len(val) > 2 and isinstance(val, tuple):
+            if isinstance(val, tuple) and len(terms) > 1 and len(val) > 2:
                 raise Exception("Bad definition of term")
             self.__mapTermsType[index] = val
             index += 1
