@@ -12,7 +12,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='embASP',
-      version='0.5',
+      version='1.0',
       description='embASP',
       long_description=long_description,
       author='Department of Mathematics and Computer Science, University of Calabria',
@@ -26,7 +26,7 @@ setup(name='embASP',
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
 
         # Pick your license as you wish (should match "license" above)
         'License :: OSI Approved :: MIT License',
