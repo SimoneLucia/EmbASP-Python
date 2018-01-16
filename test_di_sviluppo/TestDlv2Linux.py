@@ -11,7 +11,6 @@ from base.OptionDescriptor import OptionDescriptor
 import threading
 from base.Callback import Callback
 from specializations.dlv2.desktop.DLV2DesktopService import DLV2DesktopService
-from specializations.clingo.desktop.ClingoDesktopService import ClingoDesktopService
 
 
 class CountDownLatch():
@@ -34,12 +33,9 @@ class CountDownLatch():
 
 
 
-
-
-
 class Cell(Predicate):
       
-    predicateName="cell"
+    predicate_name="cell"
     
     def __init__(self, row=None, column=None, value=None):
         super(Cell, self).__init__([("row", int), ("column", int), ("value", int)])
@@ -47,18 +43,17 @@ class Cell(Predicate):
         self.value = value
         self.column = column
           
-          
-    def getRow(self):
+    def get_row(self):
         return self.row
-    def getColumn(self):
+    def get_column(self):
         return self.column
-    def getValue(self):
+    def get_value(self):
         return self.value
-    def setRow(self, row):
+    def set_row(self, row):
         self.row = row
-    def setColumn(self, column):
+    def set_column(self, column):
         self.column = column
-    def setValue(self, value):
+    def set_value(self, value):
         self.value = value
         
         
@@ -80,9 +75,8 @@ inputMatrix = [ [ 1, 0, 0, 0, 0, 7, 0, 9, 0 ],
                 [ 0, 0, 7, 0, 0, 0, 3, 0, 0 ] ]
 
 
-            
 
-handler = DesktopHandler(ClingoDesktopService("app/src/test/resources/asp/executables/clingo64.exe"))
+handler = DesktopHandler(DLV2DesktopService("app/src/test/resources/asp/executables/dlv2"))
  
 inp = ASPInputProgram()
 
@@ -90,12 +84,12 @@ for i in range(9):
     for j in range(9):
 #         print(str(inputMatrix[i][j]) + " ", end="")
         if (inputMatrix[i][j] != 0):
-            inp.addObjectInput(Cell(i,j,inputMatrix[i][j]))
+            inp.add_object_input(Cell(i,j,inputMatrix[i][j]))
 #     print()
  
-inp.addFilesPath("app/src/test/resources/asp/sudoku")
+inp.add_files_path("app/src/test/resources/asp/sudoku")
  
-handler.addProgram(inp)
+handler.add_program(inp)
 
 
 
@@ -114,40 +108,37 @@ class MyCalback(Callback):
         self.ans = o
         self.lo.count_down()
     
-    def getOutput(self):
+    def get_output(self):
         return self.ans
 
 
 
 mc = MyCalback()
- 
-handler.startAsync(mc)
- 
+
+handler.start_async(mc)
+
 print("asincrono")
- 
+
 lock.await()
- 
-out = mc.getOutput()
 
-# out = handler.startSync()
+out = mc.get_output()
 
-mapp = ASPMapper.getInstance()
+mapp = ASPMapper.get_instance()
 
 
 if not isinstance(out, Output):
     raise "error"
 
 
-if (len(out.getAnswerSets()) != 0):
-    ans = out.getAnswerSets()[0]
+if (len(out.get_answer_sets()) != 0):
+    ans = out.get_answer_sets()[0]
     
     Matrix = [[0 for x in range(w)] for y in range(h)] 
      
-    for obj in ans.getAtoms():
-        Matrix[obj.getRow()][obj.getColumn()] = obj.getValue()
+    for obj in ans.get_atoms():
+        Matrix[obj.get_row()][obj.get_column()] = obj.get_value()
      
     tmp=""
-    
     for i in range(9):
         for j in range(9):
             tmp += str(Matrix[i][j]) + " "
@@ -155,6 +146,4 @@ if (len(out.getAnswerSets()) != 0):
         tmp=""
 else:
     print("output length = 0")          
-
-
 

@@ -26,7 +26,7 @@ class SPDDesktopServiceTest(unittest.TestCase):
                 
                 inputProgramDomain = PDDLInputProgram(PDDLProgramType.DOMAIN)
                 
-                inputProgramDomain.addFilesPath(base_path + "domain.pddl")
+                inputProgramDomain.add_files_path(base_path + "domain.pddl")
                 
                 inputProgramProblem = PDDLInputProgram(PDDLProgramType.PROBLEM)
                 
@@ -37,39 +37,39 @@ class SPDDesktopServiceTest(unittest.TestCase):
                     
                 self.assertTrue(os.path.isfile(problem) , "File not found: " + problem)
                 
-                inputProgramProblem.addFilesPath(problem)
+                inputProgramProblem.add_files_path(problem)
                 
-                handler.addProgram(inputProgramDomain)
+                handler.add_program(inputProgramDomain)
 
-                handler.addProgram(inputProgramProblem)
+                handler.add_program(inputProgramProblem)
                 
-                PDDLMapper.getInstance().registerClass(PickUp)
+                PDDLMapper.get_instance().register_class(PickUp)
                 
                 self.assertIsNone(plan)
                 
                 mc = MyCallback()
   
-                handler.startAsync(mc)
+                handler.start_async(mc)
                 
                 mc.await()
                 
-                plan = mc.getOutput()
+                plan = mc.get_output()
                 
                 self.assertIsNotNone(plan)
                 
                 tmp=""
-                for action in plan.getActions():
-                    tmp = tmp + action.getName() + "," 
+                for action in plan.get_actions():
+                    tmp = tmp + action.get_name() + "," 
                 print(tmp)
                 
                 if results_sizes[i - 1] != 0:
-                    self.assertTrue(not plan.getErrors(), "Found error in the Plan " + problem + "\n" + plan.getErrors())
+                    self.assertTrue(not plan.get_errors(), "Found error in the Plan " + problem + "\n" + plan.get_errors())
                 
-                self.assertEqual(results_sizes[i - 1], len(plan.getActions()))
+                self.assertEqual(results_sizes[i - 1], len(plan.get_actions()))
                 
-                for obj in plan.getActionsObjects():
+                for obj in plan.get_actions_objects():
                     if isinstance(obj, PickUp):
-                        print(obj.getBlock())
+                        print(obj.get_block())
                         
                 time.sleep(0.5)
             

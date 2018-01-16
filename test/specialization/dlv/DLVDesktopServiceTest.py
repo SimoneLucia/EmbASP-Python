@@ -48,20 +48,20 @@ class DLVDesktopServiceTest(unittest.TestCase):
             for i in range(9):
                 for j in range(9):
                     if (self.inputMatrix[i][j] != 0):
-                        inp.addObjectInput(Cell(i,j,self.inputMatrix[i][j]))
+                        inp.add_object_input(Cell(i,j,self.inputMatrix[i][j]))
                       
-            inp.addFilesPath(os.path.join("..", "..", "resources", "asp", "sudoku"))
+            inp.add_files_path(os.path.join("..", "..", "resources", "asp", "sudoku"))
              
-            handler.addProgram(inp)
+            handler.add_program(inp)
             
             
             mc = MyCallback()
   
-            handler.startAsync(mc)
+            handler.start_async(mc)
             
             mc.await()
                
-            out = mc.getOutput()
+            out = mc.get_output()
             
             # out = handler.startSync()  
               
@@ -70,16 +70,16 @@ class DLVDesktopServiceTest(unittest.TestCase):
             
             self.assertTrue(isinstance(out, Output), "Error, result object is not Output")
 
-            self.assertIsNone(out.getErrors(), "Found error in the Plan\n" + str(out.getErrors()))
+            self.assertIsNone(out.get_errors(), "Found error in the Plan\n" + str(out.get_errors()))
             
             
-            if (len(out.getAnswerSets()) == 0):
+            if (len(out.get_answer_sets()) == 0):
                 return
             
-            ans = out.getAnswerSets()[0]
+            ans = out.get_answer_sets()[0]
              
-            for obj in ans.getAtoms():
-                self.inputMatrix[obj.getRow()][obj.getColumn()] = obj.getValue()
+            for obj in ans.get_atoms():
+                self.inputMatrix[obj.get_row()][obj.get_column()] = obj.get_value()
             
             tmp=""
             for i in range(9):

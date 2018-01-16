@@ -5,16 +5,16 @@ class AnswerSets(Output):
     
     def __init__(self, out, err=None):
         super(AnswerSets, self).__init__(out, err)
-        self._answersets = None  # Where Answer Sets are stored
+        self._answer_sets = None  # Where Answer Sets are stored
         
-    def getAnswerSets(self):
+    def get_answer_sets(self):
         """Return a set of AnswerSet"""
-        if(self._answersets == None):
-            self._answersets = list()
+        if(self._answer_sets == None):
+            self._answer_sets = list()
             self._parse()
-        return self._answersets
+        return self._answer_sets
         
-    def getAnswerSetsString(self):
+    def get_answer_sets_string(self):
         """Return a string which contains all AnswerSet"""
         return self._output
 

@@ -19,7 +19,7 @@ class DesktopService(Service):
         return self._exe_path
     
     @abstractmethod
-    def _getOutput(self, output, error):
+    def _get_output(self, output, error):
         pass
     
     def setExePath(self, exe_path):
@@ -28,33 +28,33 @@ class DesktopService(Service):
         """
         self._exe_path = exe_path
     
-    def startAsync(self, callback, programs, options):
+    def start_async(self, callback, programs, options):
         """Start a new process for the _exe_path and starts solving in Asyncronously way"""
         class myThread(Thread):
-            def __init__(self, startSync):
+            def __init__(self, start_sync):
                 Thread.__init__(self)
-                self.startSync = startSync
+                self.start_sync = start_sync
             def run(self):
-                callback.callback(self.startSync(programs, options))
+                callback.callback(self.start_sync(programs, options))
                  
-        th = myThread(self.startSync)
+        th = myThread(self.start_sync)
         th.start()
         
-    def startSync(self, programs, options):
+    def start_sync(self, programs, options):
         """Start a new process for the _exe_path and starts solving in Syncronously way"""
         option = ""
         for o in options:
             if(o != None):
-                option += o.getOptions()
-                option += o.getSeparator()
+                option += o.get_options()
+                option += o.get_separator()
             else:
                 print("Warning : wrong " + str(OptionDescriptor().__class__.__name__))
         files_paths = ""
         final_program = ""
         for p in programs:
             if (p != None):
-                final_program += p.getPrograms()
-                program_file = p.getStringOfFilesPaths()
+                final_program += p.get_programs()
+                program_file = p.get_string_of_files_paths()
                 if (program_file != None):
                     files_paths += program_file
             else:
@@ -72,10 +72,10 @@ class DesktopService(Service):
         if opt != "":
             lis.append(opt)
         lis.append(files_paths[:-1])
-        if self._load_from_STDIN_option != "":
-            lis.append(self._load_from_STDIN_option)
+        if self._load_from_stdin_option != "":
+            lis.append(self._load_from_stdin_option)
         
-        print(exep + " " + opt + " " + files_paths + self._load_from_STDIN_option)
+        print(exep + " " + opt + " " + files_paths + self._load_from_stdin_option)
         
         start = int(time.time()*1e+9)
         
@@ -88,5 +88,5 @@ class DesktopService(Service):
         print("Total time : " + str(end - start))
         print("")
         
-        return self._getOutput(output, error)
+        return self._get_output(output, error)
         

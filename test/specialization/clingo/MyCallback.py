@@ -28,5 +28,5 @@ class MyCallback(Callback):
         self.ans = o
         self.__count_down()
     
-    def getOutput(self):
+    def get_output(self):
         return self.ans

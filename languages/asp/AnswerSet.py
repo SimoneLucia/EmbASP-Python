@@ -8,25 +8,25 @@ class AnserSet(object):
         self.__weight_map = weightMap  # Where weights of the answer set are stored
         self.__atoms = set()  # Where Answer set's atoms are stored
         
-    def getAnswerSet(self):
+    def get_answer_set(self):
         """Return the current __value data
         The method return a list of answer sets in a String format
         """
         return self.__value
     
-    def getAtoms(self):
+    def get_atoms(self):
         """Return atoms stored in __atoms
         The method return a set of Object filled with atoms data
         """
         if not self.__atoms:
-            mapper = ASPMapper.getInstance()
+            mapper = ASPMapper.get_instance()
             for atom in self.__value:
-                obj = mapper.getObject(atom)
+                obj = mapper.get_object(atom)
                 if (not obj == None):
                     self.__atoms.add(obj)
         return self.__atoms
     
-    def getWeights(self):
+    def get_weights(self):
         """Return the weight_map"""
         return self.__weight_map
     

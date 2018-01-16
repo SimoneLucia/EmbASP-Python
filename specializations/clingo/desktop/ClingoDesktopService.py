@@ -6,16 +6,16 @@ class ClingoDesktopService(DesktopService):
     
     def __init__(self, exe_path):
         super(ClingoDesktopService, self).__init__(exe_path)
-        self._load_from_STDIN_option = "-"
+        self._load_from_stdin_option = "-"
         
-    def _getOutput(self, output, error):
+    def _get_output(self, output, error):
         """Return a new ClingoAnwerSets from output and error given"""
         return ClingoAnswerSets(output, error)
     
-    def startSync(self, programs, options):
-        """Call startSync method of a superclass, and return her output object"""
-        return super(ClingoDesktopService, self).startSync(programs, options)
+    def start_sync(self, programs, options):
+        """Call start_sync method of a superclass, and return her output object"""
+        return super(ClingoDesktopService, self).start_sync(programs, options)
     
-    def startAsync(self, callback, programs, options):
-        """Call startAsync method of a superclass"""
-        super(ClingoDesktopService, self).startAsync(callback, programs, options)
+    def start_async(self, callback, programs, options):
+        """Call start_async method of a superclass"""
+        super(ClingoDesktopService, self).start_async(callback, programs, options)

@@ -7,16 +7,16 @@ class PDDLMapperTest(unittest.TestCase):
 
     def test(self):
         
-        instance = PDDLMapper.getInstance()
+        instance = PDDLMapper.get_instance()
         
         try:
-            instance.registerClass(PickUp)
+            instance.register_class(PickUp)
             
-            obj = instance.getObject("(pick-up b)")
+            obj = instance.get_object("(pick-up b)")
         
             self.assertTrue(isinstance(obj, PickUp))
             
-            self.assertEqual("b", obj.getBlock())
+            self.assertEqual("b", obj.get_block())
             
         except Exception as e:
             self.fail(str(e))

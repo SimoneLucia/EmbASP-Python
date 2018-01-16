@@ -10,7 +10,7 @@ class DLV2AnswerSets(AnswerSets):
         super(DLV2AnswerSets, self).__init__(out, err)
         
     def _parse(self):
-        """Create new AnswerSet object represents output come from solver execution and add this in _answersets field"""
+        """Create new AnswerSet object represents output come from solver execution and add this in _answer_sets field"""
         optimum = "OPTIMUM" in self._output
         
         if not optimum:
@@ -35,9 +35,9 @@ class DLV2AnswerSets(AnswerSets):
                 except Exception:
                     traceback.print_exc()
                 
-                self._answersets.append(AnserSet(answerSetList, weightMap))    
+                self._answer_sets.append(AnserSet(answerSetList, weightMap))    
                 
             else:
-                self._answersets.append(AnserSet(answerSetList))
+                self._answer_sets.append(AnserSet(answerSetList))
                 
                 

@@ -8,26 +8,26 @@ class ASPMapperTest(unittest.TestCase):
 
     def test(self):
         
-        instance = ASPMapper.getInstance()
+        instance = ASPMapper.get_instance()
         
         try:
-            instance.registerClass(Cell)
+            instance.register_class(Cell)
             
-            obj = instance.getObject("cell(1,2,5)")
+            obj = instance.get_object("cell(1,2,5)")
         
             self.assertTrue(isinstance(obj, Cell))
             
-            self.assertEqual(1, obj.getRow())
+            self.assertEqual(1, obj.get_row())
             
-            self.assertEqual(2, obj.getColumn())
+            self.assertEqual(2, obj.get_column())
             
-            self.assertEqual(5, obj.getValue())
+            self.assertEqual(5, obj.get_value())
             
-            self.assertEqual("cell(1,2,5)", instance.getString(obj))
+            self.assertEqual("cell(1,2,5)", instance.get_string(obj))
             
-            instance.unregisterClass(Cell)
+            instance.unregister_class(Cell)
             
-            noneObject = instance.getObject("cell(1,2,5)")
+            noneObject = instance.get_object("cell(1,2,5)")
             
             self.assertIsNone(noneObject)
             

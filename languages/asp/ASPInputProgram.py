@@ -8,14 +8,14 @@ class ASPInputProgram(InputProgram):
         super(ASPInputProgram, self).__init__()
     
     
-    def addObjectInput(self, inputObj):
+    def add_object_input(self, inputObj):
         """Transforms a given Object class into a InputProgram and adds it to the current _programs
         The parameter inputObj is an object to be transformed
         """
-        self.addProgram(ASPMapper.getInstance().getString(inputObj) + ".")
+        self.add_program(ASPMapper.get_instance().get_string(inputObj) + ".")
     
     
-    def addObjectsInput(self, inputObjs):
+    def add_objects_input(self, inputObjs):
         """Transforms a set of objects"""
         for inputObj in inputObjs:
-            self.addObjectInput(inputObj)
+            self.add_object_input(inputObj)

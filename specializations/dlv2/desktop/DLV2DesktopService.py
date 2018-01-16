@@ -7,18 +7,18 @@ class DLV2DesktopService(DesktopService):
     
     def __init__(self, exe_path):
         super(DLV2DesktopService, self).__init__(exe_path)
-        self._load_from_STDIN_option = "--"
-        self.competitionOutputOption = OptionDescriptor("--competition-output")
+        self._load_from_stdin_option = "--"
+        self.competition_output_option = OptionDescriptor("--competition-output")
         
-    def _getOutput(self, output, error):
+    def _get_output(self, output, error):
         """Return a new DLV2AnwerSets from output and error given"""
         return DLV2AnswerSets(output, error)
     
-    def startAsync(self, callback, programs, options):
-        """Call startAsync method of a superclass"""
-        super(DLV2DesktopService, self).startAsync(callback, programs, options)
+    def start_async(self, callback, programs, options):
+        """Call start_async method of a superclass"""
+        super(DLV2DesktopService, self).start_async(callback, programs, options)
         
-    def startSync(self, programs, options):
-        """Call startSync method of a superclass, and return her output object"""
-        options.append(self.competitionOutputOption)
-        return super(DLV2DesktopService, self).startSync(programs, options)
+    def start_sync(self, programs, options):
+        """Call start_sync method of a superclass, and return her output object"""
+        options.append(self.competition_output_option)
+        return super(DLV2DesktopService, self).start_sync(programs, options)

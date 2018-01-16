@@ -44,74 +44,62 @@ class MyCalback(Callback):
         self.ans = o
         self.lo.count_down()
     
-    def getOutput(self):
+    def get_output(self):
         return self.ans
 
 
 
 class PickUp(Predicate):
       
-    predicateName="pick-up"
+    predicate_name="pick-up"
     
     def __init__(self, block=None):
         super(PickUp, self).__init__([("block")])
         self.block = block
           
-#     @classmethod
-#     def getPredicateName(cls):
-#         return cls.predicateName
-          
-    def getBlock(self):
+    def get_block(self):
         return self.block
     
-    def setBlock(self, block):
+    def set_block(self, block):
         self.block = block
    
-
-
-
-
-
 
 handler = DesktopHandler(SPDDesktopService())
 
 inputProgramDomain = PDDLInputProgram(PDDLProgramType.DOMAIN)
 
-inputProgramDomain.addFilesPath("app/src/test/resources/pddl/blocksworld/domain.pddl")
+inputProgramDomain.add_files_path("app/src/test/resources/pddl/blocksworld/domain.pddl")
 
 inputProgramProblem = PDDLInputProgram(PDDLProgramType.PROBLEM)
 
-inputProgramProblem.addFilesPath("app/src/test/resources/pddl/blocksworld/p35.pddl")
+inputProgramProblem.add_files_path("app/src/test/resources/pddl/blocksworld/p35.pddl")
 
-handler.addProgram(inputProgramDomain)
-handler.addProgram(inputProgramProblem)
+handler.add_program(inputProgramDomain)
+handler.add_program(inputProgramProblem)
 
-PDDLMapper.getInstance().registerClass(PickUp)
-
-
-
+PDDLMapper.get_instance().register_class(PickUp)
 
 
 mc = MyCalback()
 
-handler.startAsync(mc)
+handler.start_async(mc)
 
 print("asincrono")
 
 lock.await()
 
-res = mc.getOutput()
+res = mc.get_output()
 
 
-# res = handler.startSync()
+# res = handler.start_sync()
 
-for x in res.getActions():
-    print(x.getName())
+for x in res.get_actions():
+    print(x.get_name())
 
 print("")
 
-for x in res.getActionsObjects():
-    print(x.getBlock())
+for x in res.get_actions_objects():
+    print(x.get_block())
     
 
 

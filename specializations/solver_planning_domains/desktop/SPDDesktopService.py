@@ -12,10 +12,10 @@ class SPDDesktopService(DesktopService):
     
     def __init__(self):
         super(SPDDesktopService, self).__init__("")
-        self.__solverUrlResourceName = "solver.planning.domains"
-        self.__solverUrlPath = "/solve"
+        self.__solver_url_resource_name = "solver.planning.domains"
+        self.__solver_url_path = "/solve"
         
-    def __createJson(self, pddlInputProgram):
+    def __create_json(self, pddlInputProgram):
         """Return a json object represents InputProgram"""
         problem = ""
         domain = ""
@@ -24,16 +24,16 @@ class SPDDesktopService(DesktopService):
             if not isinstance(ip, PDDLInputProgram):
                 continue
             pip = ip
-            pType = pip.getProgramsType()
+            pType = pip.get_programs_type()
             
             if pType is PDDLProgramType.DOMAIN:
-                domain += str(pip.getPrograms()) + str(pip.getSeparator())
-                domain += self.__getFromFile(pip.getFilesPaths(), pip.getSeparator())
+                domain += str(pip.get_programs()) + str(pip.get_separator())
+                domain += self.__get_from_file(pip.get_files_paths(), pip.get_separator())
             elif pType is PDDLProgramType.PROBLEM:
-                problem += str(pip.getPrograms()) + str(pip.getSeparator())
-                problem += self.__getFromFile(pip.getFilesPaths(), pip.getSeparator())
+                problem += str(pip.get_programs()) + str(pip.get_separator())
+                problem += self.__get_from_file(pip.get_files_paths(), pip.get_separator())
             else:
-                raise ("Program type : " + pip.getProgramsType() + " not valid.")
+                raise ("Program type : " + pip.get_programs_type() + " not valid.")
         
         if problem == "":
             raise ("Problem file not specified")
@@ -49,32 +49,32 @@ class SPDDesktopService(DesktopService):
         return json_data
         
                 
-    def __getFromFile(self, filesPaths, separator):
+    def __get_from_file(self, filesPaths, separator):
         """Read file from list of path given and return their content, separate by separator string given"""
         toReturn = ""
         for s in filesPaths:
             try:
-                toReturn += self.__readFile(s)
+                toReturn += self.__read_file(s)
                 toReturn += separator
             except IOError:
                 traceback.print_exc()
         return toReturn
     
     
-    def __postJsonToURL(self, js):
+    def __post_json_to_url(self, js):
         """Post a json string given to SPD solver server and return result"""
         result = ""
         try:
             if sys.version_info < (3,0):
                 import httplib
-                connection = httplib.HTTPConnection(self.__solverUrlResourceName)
+                connection = httplib.HTTPConnection(self.__solver_url_resource_name)
             else:
                 import http.client
-                connection = http.client.HTTPConnection(self.__solverUrlResourceName)
+                connection = http.client.HTTPConnection(self.__solver_url_resource_name)
             
             headers = {'Content-type': 'application/json'}
             
-            connection.request('POST', self.__solverUrlPath, js, headers)
+            connection.request('POST', self.__solver_url_path, js, headers)
             
             response = connection.getresponse()
             
@@ -88,7 +88,7 @@ class SPDDesktopService(DesktopService):
             connection.close()
         return result
     
-    def __readFile(self, s):
+    def __read_file(self, s):
         """Reand file from path given and return her content"""
         everything = ""
         with open(s, 'r') as f:
@@ -98,18 +98,18 @@ class SPDDesktopService(DesktopService):
                 f.close()
         return everything
            
-    def _getOutput(self, output, error):
+    def _get_output(self, output, error):
         """Return SPDPlan object from output and error strings given"""
         return SPDPlan(output, error)
     
-    def startSync(self, programs, options):
+    def start_sync(self, programs, options):
         """Return SPDPlan object represent output generated from SPD solver server"""
         if not programs:
-            return self._getOutput("", "PDDLInputProgram not defined")
+            return self._get_output("", "PDDLInputProgram not defined")
         try:
-            return self._getOutput(self.__postJsonToURL(str(self.__createJson(programs))), "")
+            return self._get_output(self.__post_json_to_url(str(self.__create_json(programs))), "")
         except Exception as e:
-            return self._getOutput("", "Error: " + str(e))
+            return self._get_output("", "Error: " + str(e))
         
         
         

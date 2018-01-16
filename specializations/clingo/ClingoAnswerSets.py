@@ -10,7 +10,7 @@ class ClingoAnswerSets(AnswerSets):
         super(ClingoAnswerSets, self).__init__(out, err)
         
     def _parse(self):
-        """Create new AnswerSet object represents output come from solver execution and add this in _answersets field"""
+        """Create new AnswerSet object represents output come from solver execution and add this in _answer_sets field"""
         optimum = "OPTIMUM" in self._output
         
         if not optimum:
@@ -20,7 +20,7 @@ class ClingoAnswerSets(AnswerSets):
         
         for m in match:
             try:
-                if m.group(1) == None or int(m.group(1)) <= len(self._answersets):
+                if m.group(1) == None or int(m.group(1)) <= len(self._answer_sets):
                     continue
             except Exception:
                 traceback.print_exc()
@@ -44,9 +44,9 @@ class ClingoAnswerSets(AnswerSets):
                 except Exception:
                     traceback.print_exc()
                     
-                self._answersets.append(AnserSet(answerSetList, weightMap))
+                self._answer_sets.append(AnserSet(answerSetList, weightMap))
                 
             else:
-                self._answersets.append(AnserSet(answerSetList))
+                self._answer_sets.append(AnserSet(answerSetList))
             
             
