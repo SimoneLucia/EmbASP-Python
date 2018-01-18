@@ -1,13 +1,13 @@
 import unittest
 import os
-from platforms.desktop.DesktopHandler import DesktopHandler
-from specializations.solver_planning_domains.desktop.SPDDesktopService import SPDDesktopService
-from languages.pddl.PDDLInputProgram import PDDLInputProgram
-from languages.pddl.PDDLProgramType import PDDLProgramType
-from languages.pddl.PDDLMapper import PDDLMapper
-from test.specialization.solver_planning_domains.MyCallback import MyCallback
+from platforms.desktop.desktop_handler import DesktopHandler
+from specializations.solver_planning_domains.desktop.spd_desktop_service import SPDDesktopService
+from languages.pddl.pddl_input_program import PDDLInputProgram
+from languages.pddl.pddl_program_type import PDDLProgramType
+from languages.pddl.pddl_mapper import PDDLMapper
+from my_callback import MyCallback
 import time
-from test.specialization.solver_planning_domains.PickUp import PickUp
+from pick_up import PickUp
 
 
 

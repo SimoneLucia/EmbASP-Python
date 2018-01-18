@@ -1,6 +1,6 @@
-from languages.asp.AnswerSets import AnswerSets
+from languages.asp.answer_sets import AnswerSets
 import re
-from languages.asp.AnswerSet import AnserSet
+from languages.asp.answer_set import AnserSet
 import traceback
 
 class ClingoAnswerSets(AnswerSets):

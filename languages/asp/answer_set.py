@@ -1,4 +1,4 @@
-from languages.asp.ASPMapper import ASPMapper
+from languages.asp.asp_mapper import ASPMapper
 
 class AnserSet(object):
     """A collection of data representing a generic Answer Set"""

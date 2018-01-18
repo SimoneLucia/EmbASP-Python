@@ -1,5 +1,5 @@
-from languages.asp.AnswerSets import AnswerSets
-from languages.asp.AnswerSet import AnserSet
+from languages.asp.answer_sets import AnswerSets
+from languages.asp.answer_set import AnserSet
 import re
 
 class DLVAnswerSets(AnswerSets):

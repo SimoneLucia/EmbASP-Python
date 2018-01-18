@@ -1,4 +1,4 @@
-from languages.Predicate import Predicate
+from languages.predicate import Predicate
 
 class Cell(Predicate):
       

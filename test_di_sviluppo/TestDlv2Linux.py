@@ -1,16 +1,15 @@
-from platforms.desktop.DesktopHandler import DesktopHandler
-from specializations.dlv.desktop.DLVDesktopService import DLVDesktopService
-from languages.asp.ASPInputProgram import ASPInputProgram
-from specializations.dlv.DLVAnswerSets import DLVAnswerSets
-from languages.Predicate import Predicate
-from languages.asp.ASPMapper import ASPMapper
-from languages.Predicate import Predicate
-from base.Output import Output
-from languages.asp.AnswerSets import AnswerSets
-from base.OptionDescriptor import OptionDescriptor
+from platforms.desktop.desktop_handler import DesktopHandler
+from specializations.dlv.desktop.dlv_desktop_service import DLVDesktopService
+from languages.asp.asp_input_program import ASPInputProgram
+from specializations.dlv.dlv_answer_sets import DLVAnswerSets
+from languages.predicate import Predicate
+from languages.asp.asp_mapper import ASPMapper
+from base.output import Output
+from languages.asp.answer_sets import AnswerSets
+from base.option_descriptor import OptionDescriptor
 import threading
-from base.Callback import Callback
-from specializations.dlv2.desktop.DLV2DesktopService import DLV2DesktopService
+from base.callback import Callback
+from specializations.dlv2.desktop.dlv2_desktop_service import DLV2DesktopService
 
 
 class CountDownLatch():

@@ -1,11 +1,11 @@
-from platforms.desktop.DesktopHandler import DesktopHandler
-from specializations.solver_planning_domains.desktop.SPDDesktopService import SPDDesktopService
-from languages.pddl.PDDLInputProgram import PDDLInputProgram
-from languages.pddl.PDDLProgramType import PDDLProgramType
-from languages.Predicate import Predicate
-from languages.pddl.PDDLMapper import PDDLMapper
-from languages.pddl.Plan import Plan
-from base.Callback import Callback
+from platforms.desktop.desktop_handler import DesktopHandler
+from specializations.solver_planning_domains.desktop.spd_desktop_service import SPDDesktopService
+from languages.pddl.pddl_input_program import PDDLInputProgram
+from languages.pddl.pddl_program_type import PDDLProgramType
+from languages.predicate import Predicate
+from languages.pddl.pddl_mapper import PDDLMapper
+from languages.pddl.plan import Plan
+from base.callback import Callback
 import threading
 
 class CountDownLatch():

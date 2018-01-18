@@ -1,8 +1,8 @@
-from base.Service import Service
+from base.service import Service
 from abc import abstractmethod
-from base.OptionDescriptor import OptionDescriptor
-from base.InputProgram import InputProgram
-from base.Output import Output
+from base.option_descriptor import OptionDescriptor
+from base.input_program import InputProgram
+from base.output import Output
 import subprocess
 import time
 from threading import Thread

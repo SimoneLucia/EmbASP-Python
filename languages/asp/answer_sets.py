@@ -1,4 +1,4 @@
-from base.Output import Output
+from base.output import Output
 
 class AnswerSets(Output):
     """A collection of AnswerSet"""

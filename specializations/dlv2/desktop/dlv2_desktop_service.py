@@ -1,6 +1,6 @@
-from platforms.desktop.DesktopService import DesktopService
-from base.OptionDescriptor import OptionDescriptor
-from specializations.dlv2.DLV2AnswerSets import DLV2AnswerSets
+from platforms.desktop.desktop_service import DesktopService
+from base.option_descriptor import OptionDescriptor
+from specializations.dlv2.dlv2_answer_sets import DLV2AnswerSets
 
 class DLV2DesktopService(DesktopService):
     """Is an extention of DesktopService for DLV2's solver"""

@@ -1,6 +1,6 @@
 import threading
-from base.Callback import Callback
-from languages.pddl.Plan import Plan
+from base.callback import Callback
+from languages.asp.answer_sets import AnswerSets
 
 class MyCallback(Callback):
     
@@ -23,7 +23,7 @@ class MyCallback(Callback):
         self.lock.release()
     
     def callback(self, o):
-        if (not isinstance(o, Plan)):
+        if (not isinstance(o, AnswerSets)):
             return
         self.ans = o
         self.__count_down()

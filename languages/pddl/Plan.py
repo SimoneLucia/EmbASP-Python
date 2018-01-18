@@ -1,5 +1,5 @@
-from base.Output import Output
-from languages.pddl.PDDLMapper import PDDLMapper
+from base.output import Output
+from languages.pddl.pddl_mapper import PDDLMapper
 from abc import ABCMeta
 
 class Plan(Output):

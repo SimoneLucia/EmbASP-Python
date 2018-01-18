@@ -1,5 +1,5 @@
-from platforms.desktop.DesktopService import DesktopService
-from specializations.clingo.ClingoAnswerSets import ClingoAnswerSets
+from platforms.desktop.desktop_service import DesktopService
+from specializations.clingo.clingo_answer_sets import ClingoAnswerSets
 
 class ClingoDesktopService(DesktopService):
     """Is an extention of DesktopService for Clingo's solver"""

@@ -1,5 +1,5 @@
-from base.InputProgram import InputProgram
-from languages.asp.ASPMapper import ASPMapper
+from base.input_program import InputProgram
+from languages.asp.asp_mapper import ASPMapper
 
 class ASPInputProgram(InputProgram):
     """A generic ASP program, with the capabilities of retrieve data by objects"""

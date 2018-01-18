@@ -1,11 +1,11 @@
-from platforms.desktop.DesktopService import DesktopService
-from languages.pddl.PDDLInputProgram import PDDLInputProgram
+from platforms.desktop.desktop_service import DesktopService
+from languages.pddl.pddl_input_program import PDDLInputProgram
 import json
 import traceback
 import sys    
-from languages.pddl.PDDLProgramType import PDDLProgramType
-from specializations.solver_planning_domains.SPDPlan import SPDPlan
-from languages.pddl.PDDLException import PDDLException
+from languages.pddl.pddl_program_type import PDDLProgramType
+from specializations.solver_planning_domains.spd_plan import SPDPlan
+from languages.pddl.pddl_exception import PDDLException
 
 class SPDDesktopService(DesktopService):
     """Is an extention of DesktopService for SPDD's solver"""

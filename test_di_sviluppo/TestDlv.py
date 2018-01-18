@@ -1,11 +1,11 @@
-from platforms.desktop.DesktopHandler import DesktopHandler
-from specializations.dlv.desktop.DLVDesktopService import DLVDesktopService
-from languages.asp.ASPInputProgram import ASPInputProgram
-from languages.Predicate import Predicate
-from base.Output import Output
-from languages.asp.AnswerSets import AnswerSets
+from platforms.desktop.desktop_handler import DesktopHandler
+from specializations.dlv.desktop.dlv_desktop_service import DLVDesktopService
+from languages.asp.asp_input_program import ASPInputProgram
+from languages.predicate import Predicate
+from base.output import Output
+from languages.asp.answer_sets import AnswerSets
 import threading
-from base.Callback import Callback
+from base.callback import Callback
 
 
 

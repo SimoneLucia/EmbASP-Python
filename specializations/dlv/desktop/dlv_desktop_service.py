@@ -1,5 +1,5 @@
-from platforms.desktop.DesktopService import DesktopService
-from specializations.dlv.DLVAnswerSets import DLVAnswerSets
+from platforms.desktop.desktop_service import DesktopService
+from specializations.dlv.dlv_answer_sets import DLVAnswerSets
 
 class DLVDesktopService(DesktopService):
     """Is an extention of DesktopService for DLV's solver"""

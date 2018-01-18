@@ -1,15 +1,15 @@
 import unittest
-from languages.asp.ASPInputProgram import ASPInputProgram
-from platforms.desktop.DesktopHandler import DesktopHandler
-from specializations.dlv.desktop.DLVDesktopService import DLVDesktopService
-from base.Output import Output
-from test.specialization.dlv.Cell import Cell
-from test.specialization.dlv.MyCallback import MyCallback
+from languages.asp.asp_input_program import ASPInputProgram
+from platforms.desktop.desktop_handler import DesktopHandler
+from base.output import Output
+from cell import Cell
+from my_callback import MyCallback
 import sys
 import os
+from specializations.clingo.desktop.clingo_desktop_service import ClingoDesktopService
 
 
-class DLVDesktopServiceTest(unittest.TestCase):
+class ClingoDesktopServiceTest(unittest.TestCase):
 
     n = 9
     inputMatrix = [ [ 1, 0, 0, 0, 0, 7, 0, 9, 0 ],
@@ -27,21 +27,22 @@ class DLVDesktopServiceTest(unittest.TestCase):
         OS = sys.platform
         path = os.path.join("..", "..", "resources", "asp", "executables")
         if OS.startswith("win32"):
-            path = os.path.join(path, "dlv.mingw.exe")
+            if sys.maxsize > 2**32:
+                path = os.path.join(path, "clingo64.exe")
+            else:
+                path = os.path.join(path, "clingo32.exe")
         else:
             if OS.startswith("darwin"):
-                path = os.path.join(path, "dlv.i386-apple-darwin.bin")
+                path = os.path.join(path, "clingo_macos")
             else:
                 if OS.startswith("linux"):
-                    if sys.maxsize > 2**32:
-                        path = os.path.join(path, "dlv.x86-64-linux-elf-static.bin")
-                    else:
-                        path = os.path.join(path, "dlv.i386-linux-elf-static.bin")
+                    path = os.path.join(path, "clingo_linux")
+                    
         return path
 
     def test_sudoku(self):
         try:
-            handler = DesktopHandler(DLVDesktopService(self.getPath()))
+            handler = DesktopHandler(ClingoDesktopService(self.getPath()))
  
             inp = ASPInputProgram()
             
@@ -50,7 +51,7 @@ class DLVDesktopServiceTest(unittest.TestCase):
                     if (self.inputMatrix[i][j] != 0):
                         inp.add_object_input(Cell(i,j,self.inputMatrix[i][j]))
                       
-            inp.add_files_path(os.path.join("..", "..", "resources", "asp", "sudoku"))
+            inp.add_files_path(os.path.join("..", "..","resources", "asp", "sudoku"))
              
             handler.add_program(inp)
             

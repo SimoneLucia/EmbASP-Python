@@ -1,4 +1,4 @@
-from languages.Mapper import Mapper
+from languages.mapper import Mapper
 class ASPMapper(Mapper):
     """Contains methods used to transform Objects into InputProgram"""
     

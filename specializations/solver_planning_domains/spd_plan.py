@@ -1,6 +1,6 @@
-from languages.pddl.Plan import Plan
+from languages.pddl.plan import Plan
 import json
-from languages.pddl.Action import Action
+from languages.pddl.action import Action
 
 class SPDPlan(Plan):
     """Represent a solution to a SPD problem"""

@@ -1,4 +1,4 @@
-from base.InputProgram import InputProgram
+from base.input_program import InputProgram
 
 class PDDLInputProgram(InputProgram):
     """A generic PDDL program"""

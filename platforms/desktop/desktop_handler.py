@@ -1,4 +1,4 @@
-from base.Handler import Handler
+from base.handler import Handler
 
 class DesktopHandler(Handler):
     """Is a Handler specialization for a Desktop platform"""

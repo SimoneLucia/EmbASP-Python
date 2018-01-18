@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from languages.Predicate import Predicate
+from languages.predicate import Predicate
 
 class Mapper(object):
     """Base class, contains methods used to transform Objects into InputProgram"""
